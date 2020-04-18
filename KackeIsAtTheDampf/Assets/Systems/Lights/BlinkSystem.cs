@@ -27,7 +27,7 @@ namespace Assets.Systems.Lights
                     {
                         X = Random.Range(0, 8),
                         Y = Random.Range(0, 8),
-                        FallOff = 0.5f,
+                        FallOff = 0.2f,
                         Delay = 0,
                         BlinkColor = Color.red
                     });

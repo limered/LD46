@@ -9,7 +9,7 @@ namespace Assets.Systems.Lights
     public class BlinkComponent : GameComponent
     {
         public float FadeDuration = 0.3f;
-        public int AnimationSteps = 60;
+        public int AnimationSteps = 20;
         public float DelayInSec = 0;
         public Color BaseColor = Color.black;
         public Color BlinkColor = Color.red;
