@@ -36,7 +36,8 @@ namespace Assets.Systems.FloorLights
                 var t = (float)i / AnimationSteps;
                 var mix = 1f - Mathf.Sin((t * Mathf.PI) / 2f);
                 Value = mix;
-                _thisRenderer.material.color = Color32.Lerp(BaseColor, BlinkColor, mix);
+                var emission = Color32.Lerp(BaseColor, BlinkColor, mix);
+                _thisRenderer.material.SetColor("_EmissionColor", emission);
                 yield return new WaitForSeconds(step);
             }
 
