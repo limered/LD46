@@ -38,7 +38,7 @@ namespace Assets.Systems.Floor
             }
 
             var light = _matrix[msg.X, msg.Y];
-            var blinkComponent = light.GetComponent<BeatBlinkComponent>();
+            var blinkComponent = light.GetComponent<BlinkComponent>();
             blinkComponent.FadeDuration = msg.FallOff;
             blinkComponent.BlinkColor = msg.BlinkColor;
             blinkComponent.DelayInSec = msg.Delay;
