@@ -35,7 +35,17 @@ namespace Assets.Systems.Lights
         private IEnumerator BlinkCoroutine()
         {
             var step = FadeDuration / AnimationSteps;
-            for (var i = 0; i < AnimationSteps; i++)
+            var preStep = (int) (AnimationSteps * 0.05);
+            var postStep = (int) (AnimationSteps * 0.95);
+            for (var i = 0; i < preStep; i++)
+            {
+                var t = (float)i / AnimationSteps;
+                var mix = 1f - Mathf.Cos((t * Mathf.PI) / 2f);
+                var emission = Color32.Lerp(BaseColor, BlinkColor, mix);
+                _thisRenderer.material.SetColor("_EmissionColor", emission);
+                yield return new WaitForSecondsRealtime(step);
+            }
+            for (var i = 0; i < postStep; i++)
             {
                 var t = (float)i / AnimationSteps;
                 var mix = 1f - Mathf.Sin((t * Mathf.PI) / 2f);
