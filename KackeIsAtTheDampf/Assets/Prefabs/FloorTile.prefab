@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4527311686628554179}
   - component: {fileID: 4527311686628554178}
   - component: {fileID: 2543583922020333538}
+  - component: {fileID: 560869232684592276}
   m_Layer: 0
   m_Name: FloorTile
   m_TagString: Untagged
@@ -106,3 +107,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7d00936cb2dc04d84a6fb39ae027f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &560869232684592276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4527311686628554191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b98897a9bacccd44b364682563ab833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FadeDuration: 0.3
+  AnimationSteps: 60
+  DelayInSec: 0
+  BaseColor: {r: 0, g: 0, b: 0, a: 1}
+  BlinkColor: {r: 1, g: 0, b: 0, a: 1}
+  Value: 0
