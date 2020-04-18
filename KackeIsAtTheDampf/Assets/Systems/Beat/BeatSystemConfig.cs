@@ -5,7 +5,7 @@ namespace Assets.Systems.Beat
 {
     public class BeatSystemConfig : GameComponent
     {
-        public FloatReactiveProperty BPM = new FloatReactiveProperty(120);
+        public FloatReactiveProperty BPM = new FloatReactiveProperty(118);
 
         public ReactiveCommand BeatTrigger = new ReactiveCommand();
     }
