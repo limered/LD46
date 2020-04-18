@@ -4,12 +4,13 @@ using SystemBase;
 using UniRx;
 using UnityEngine;
 
-namespace Assets.Systems.FloorLights
+namespace Assets.Systems.Lights
 {
-    public class FloorLight : GameComponent
+    public class BeatBlinkComponent : GameComponent
     {
         public float FadeDuration = 0.3f;
         public int AnimationSteps = 60;
+        public float DelayInSec = 0;
         public Color BaseColor = Color.black;
         public Color BlinkColor = Color.red;
         public float Value;
@@ -30,6 +31,7 @@ namespace Assets.Systems.FloorLights
 
         private IEnumerator BlinkCoroutine()
         {
+            yield return new WaitForSecondsRealtime(DelayInSec);
             var step = FadeDuration / AnimationSteps;
             for (var i = 0; i < AnimationSteps; i++)
             {
@@ -38,7 +40,7 @@ namespace Assets.Systems.FloorLights
                 Value = mix;
                 var emission = Color32.Lerp(BaseColor, BlinkColor, mix);
                 _thisRenderer.material.SetColor("_EmissionColor", emission);
-                yield return new WaitForSeconds(step);
+                yield return new WaitForSecondsRealtime(step);
             }
 
             _thisRenderer.material.color = BaseColor;
