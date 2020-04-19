@@ -25,7 +25,7 @@ namespace Assets.Systems.Beat
 
         private void OnBeat(BeatSystemConfig cofig)
         {
-            cofig.BeatTrigger.ForceExecute();
+            cofig.BeatTrigger.Value += 1;
         }
     }
 }

@@ -7,6 +7,6 @@ namespace Assets.Systems.Beat
     {
         public FloatReactiveProperty BPM = new FloatReactiveProperty(118);
 
-        public ReactiveCommand BeatTrigger = new ReactiveCommand();
+        public IntReactiveProperty BeatTrigger = new IntReactiveProperty(0);
     }
 }
