@@ -11,18 +11,17 @@ namespace Assets.Systems.Chorio
         public override void Register(BeatSystemConfig component)
         {
             component.BeatTrigger
-                .Subscribe(OnBeat)
+                .Subscribe(beatInfo => OnBeat(beatInfo, component.TimePerBeat))
                 .AddTo(component);
         }
 
-        private void OnBeat(int beatNo)
+        private void OnBeat(BeatInfo beatInfo, float timePerBeat)
         {
-            if (beatNo % 4 != 0) return;
-
             MessageBroker.Default.Publish(new EvtNextBeatKeyAdded
             {
                 Key = "g",
-                BeatNo = beatNo + 2,
+                PlannedBeatTime = beatInfo.BeatTime + timePerBeat * 2,
+                BeatNo = beatInfo.BeatNo + 2
             });
         }
     }

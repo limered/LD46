@@ -18,8 +18,7 @@ namespace Assets.Systems.BeatChecker
         private float _greenCheckDuration = 0.2f;
 
         private readonly Queue<BeatKeyInfo> _nextKeysToPress = new Queue<BeatKeyInfo>();
-        private float _lastBeatTimestamp;
-        private int _lastBeatNo;
+        private BeatInfo _lastBeatInfo;
         private EvtKeyPressed _lastKeyPressed;
         private BeatSystemConfig _beatSystemConfig;
 
@@ -28,7 +27,7 @@ namespace Assets.Systems.BeatChecker
             _beatSystemConfig = component;
 
             component.BeatTrigger
-                .Where(i => _nextKeysToPress.Any() && i == _nextKeysToPress.Peek().BeatNo)
+                .Where(i => _nextKeysToPress.Any() && _nextKeysToPress.Peek().BeatNo == i.BeatNo)
                 .Delay(TimeSpan.FromSeconds(_yellowCheckDuration))
                 .Subscribe(OnBeatDelayed)
                 .AddTo(component);
@@ -36,8 +35,7 @@ namespace Assets.Systems.BeatChecker
             component.BeatTrigger
                 .Subscribe(i =>
                 {
-                    _lastBeatTimestamp = Time.realtimeSinceStartup;
-                    _lastBeatNo = i;
+                    _lastBeatInfo = i;
                 })
                 .AddTo(component);
 
@@ -68,9 +66,9 @@ namespace Assets.Systems.BeatChecker
         private float GetNextKeyToPressTime()
         {
             var nextKey = _nextKeysToPress.Peek();
-            var beatDelta = nextKey.BeatNo - _lastBeatNo;
+            var beatDelta = nextKey.BeatNo - _lastBeatInfo.BeatNo;
             var timePerBeat = 60f / _beatSystemConfig.BPM.Value;
-            return _lastBeatTimestamp + beatDelta * timePerBeat;
+            return _lastBeatInfo.BeatTime + beatDelta * timePerBeat;
         }
 
         private void AddNextBeatKeyToQueue(EvtNextBeatKeyAdded obj)
@@ -78,6 +76,7 @@ namespace Assets.Systems.BeatChecker
             _nextKeysToPress.Enqueue(new BeatKeyInfo
             {
                 BeatNo = obj.BeatNo,
+                TimeToPress = obj.PlannedBeatTime,
                 KeyToPress = obj.Key,
                 State = BeatKeyState.None,
             });
@@ -85,24 +84,24 @@ namespace Assets.Systems.BeatChecker
             Debug.Log("Enque " + obj.BeatNo);
         }
 
-        private void OnBeatDelayed(int beatNo)
+        private void OnBeatDelayed(BeatInfo beatInfo)
         {
             if (!_nextKeysToPress.Any()) return;
 
-            Debug.Log("Trigger " + beatNo);
+            Debug.Log("Trigger " + beatInfo.BeatTime);
 
             var currentBeatInfo = _nextKeysToPress.Dequeue();
             if (currentBeatInfo.State == BeatKeyState.Red)
             {
                 // Send Fail
-                Debug.Log("Fail 1 " + beatNo);
+                Debug.Log("Fail 1 " + beatInfo.BeatTime);
                 return;
             }
             if (currentBeatInfo.KeyToPress != _lastKeyPressed.Key)
             {
                 currentBeatInfo.State = BeatKeyState.Red;
                 // Send Fail
-                Debug.Log("Fail 2 " + beatNo);
+                Debug.Log("Fail 2 " + beatInfo.BeatTime);
                 return;
             }
 
@@ -110,20 +109,20 @@ namespace Assets.Systems.BeatChecker
             if (timeDelta < _greenCheckDuration * 2)
             {
                 currentBeatInfo.State = BeatKeyState.Green;
-                Debug.Log("Green " + beatNo);
+                Debug.Log("Green " + beatInfo.BeatTime);
                 // Send MaxPts
             }
             else if (timeDelta < _yellowCheckDuration * 2)
             {
                 currentBeatInfo.State = BeatKeyState.Yellow;
                 // Send Normal Points
-                Debug.Log("Yellow " + beatNo);
+                Debug.Log("Yellow " + beatInfo.BeatTime);
             }
             else
             {
                 currentBeatInfo.State = BeatKeyState.Red;
                 // Send Fail
-                Debug.Log("Fail 3 " + beatNo);
+                Debug.Log("Fail 3 " + beatInfo.BeatTime);
             }
         }
     }
@@ -131,6 +130,7 @@ namespace Assets.Systems.BeatChecker
     public class BeatKeyInfo
     {
         public int BeatNo;
+        public float TimeToPress;
         public string KeyToPress;
         public BeatKeyState State;
     }

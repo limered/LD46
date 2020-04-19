@@ -13,14 +13,20 @@ namespace Assets.Systems.TargetKeys
 
         public override void Register(TargetKeyAnimationConfig component)
         {
-            component.WaitOn(_beatSystemConfig, config => Register(component, config)).AddTo(component);
+            component.WaitOn(_beatSystemConfig, config => Register(component, config))
+                .AddTo(component);
         }
 
         private void Register(TargetKeyAnimationConfig config, BeatSystemConfig beatSystemConfig)
         {
             MessageBroker.Default.Receive<EvtNextBeatKeyAdded>()
-                .Subscribe(OnNewTargetKeyAdded)
+                .Subscribe(evt => OnNewTargetKeyAdded(evt, config, beatSystemConfig))
                 .AddTo(config);
+        }
+
+        private void OnNewTargetKeyAdded(EvtNextBeatKeyAdded msg, TargetKeyAnimationConfig config, BeatSystemConfig beatSystemConfig)
+        {
+            
         }
 
         public override void Register(TargetKeyAnimationComponent component)
@@ -28,10 +34,7 @@ namespace Assets.Systems.TargetKeys
             throw new NotImplementedException();
         }
 
-        private void OnNewTargetKeyAdded(EvtNextBeatKeyAdded obj)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public override void Register(BeatSystemConfig component)
         {
