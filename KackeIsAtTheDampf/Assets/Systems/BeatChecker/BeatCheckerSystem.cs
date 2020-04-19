@@ -27,7 +27,8 @@ namespace Assets.Systems.BeatChecker
             _beatSystemConfig = component;
 
             component.BeatTrigger
-                .Where(i => _nextKeysToPress.Any() && _nextKeysToPress.Peek().BeatNo == i.BeatNo)
+                .Where(i => _nextKeysToPress.Any(info => info.BeatNo == i.BeatNo))
+                .Select(info => new Tuple<BeatInfo, BeatKeyInfo>(info, _nextKeysToPress.Dequeue()))
                 .Delay(TimeSpan.FromSeconds(_yellowCheckDuration))
                 .Subscribe(OnBeatDelayed)
                 .AddTo(component);
@@ -81,27 +82,32 @@ namespace Assets.Systems.BeatChecker
                 State = BeatKeyState.None,
             });
 
-            Debug.Log("Enque " + obj.BeatNo);
+            //Debug.Log("Enque " + obj.BeatNo);
+            foreach (var beatKeyInfo in _nextKeysToPress.ToArray())
+            {
+                Debug.Log(beatKeyInfo.BeatNo);
+            }
         }
 
-        private void OnBeatDelayed(BeatInfo beatInfo)
+        private void OnBeatDelayed(Tuple<BeatInfo, BeatKeyInfo> beatInfoTuple)
         {
-            if (!_nextKeysToPress.Any()) return;
 
-            Debug.Log("Trigger " + beatInfo.BeatTime);
+            var beatInfo = beatInfoTuple.Item1;
+            var currentBeatInfo = beatInfoTuple.Item2;
 
-            var currentBeatInfo = _nextKeysToPress.Dequeue();
+            Debug.Log("Trigger " + beatInfo.BeatNo);
+
             if (currentBeatInfo.State == BeatKeyState.Red)
             {
                 // Send Fail
-                Debug.Log("Fail 1 " + beatInfo.BeatTime);
+                Debug.Log("Fail 1 " + beatInfo.BeatNo);
                 return;
             }
             if (currentBeatInfo.KeyToPress != _lastKeyPressed.Key)
             {
                 currentBeatInfo.State = BeatKeyState.Red;
                 // Send Fail
-                Debug.Log("Fail 2 " + beatInfo.BeatTime);
+                Debug.Log("Fail 2 " + beatInfo.BeatNo);
                 return;
             }
 
@@ -109,20 +115,20 @@ namespace Assets.Systems.BeatChecker
             if (timeDelta < _greenCheckDuration * 2)
             {
                 currentBeatInfo.State = BeatKeyState.Green;
-                Debug.Log("Green " + beatInfo.BeatTime);
+                Debug.Log("Green " + beatInfo.BeatNo);
                 // Send MaxPts
             }
             else if (timeDelta < _yellowCheckDuration * 2)
             {
                 currentBeatInfo.State = BeatKeyState.Yellow;
                 // Send Normal Points
-                Debug.Log("Yellow " + beatInfo.BeatTime);
+                Debug.Log("Yellow " + beatInfo.BeatNo);
             }
             else
             {
                 currentBeatInfo.State = BeatKeyState.Red;
                 // Send Fail
-                Debug.Log("Fail 3 " + beatInfo.BeatTime);
+                Debug.Log("Fail 3 " + beatInfo.BeatNo);
             }
         }
     }

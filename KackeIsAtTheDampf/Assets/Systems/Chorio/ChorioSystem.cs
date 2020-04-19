@@ -17,6 +17,8 @@ namespace Assets.Systems.Chorio
 
         private void OnBeat(BeatInfo beatInfo, float timePerBeat)
         {
+            if (beatInfo.BeatNo % 4 != 0) return;
+
             MessageBroker.Default.Publish(new EvtNextBeatKeyAdded
             {
                 Key = "g",
