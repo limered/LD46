@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 548380905699352795}
   - component: {fileID: 548380905699352869}
   - component: {fileID: 164279550}
+  - component: {fileID: 513839701}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -59,10 +60,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee9128b51fc0a34e81d15cb64e00192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  YellowCheckDuration: 0.3
+  GreenCheckDuration: 0.1
   BPM:
-    value: 118
-  BeatTrigger:
-    value: 0
+    value: 129
+  TimePerBeat: 0
 --- !u!114 &164279550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,3 +77,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9dd9d4d3f8dcdc41a2b7c37573c3b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RelevantKeys:
+  - w
+  - e
+  - r
+  - s
+  - d
+  - f
+  - x
+  - c
+  - v
+--- !u!114 &513839701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548380905699352792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94d8be8ac4463949be6561c72bfd6d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RedHitPoints: -10
+  YellowPoints: 2
+  GreenPoints: 5
+  MaxHyperScore: 100
+  MinHyperScore: 0
+  HyperScore:
+    value: 5
+  FullScore:
+    value: 0

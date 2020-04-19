@@ -1,4 +1,5 @@
 ﻿using Assets.Systems.Beat;
+using Assets.Systems.BeatChecker.Events;
 using Assets.Systems.Chorio.Evt;
 using Assets.Systems.Key;
 using Assets.Systems.Key.Events;
@@ -20,27 +21,11 @@ namespace Assets.Systems.BeatChecker
     public class BeatCheckerSystem : GameSystem<BeatSystemConfig>
     {
         private readonly Queue<BeatKeyInfo> _nextKeysToPress = new Queue<BeatKeyInfo>();
-        private BeatInfo _lastBeatInfo;
-        private EvtKeyPressed _lastKeyPressed;
         private BeatSystemConfig _beatSystemConfig;
 
         public override void Register(BeatSystemConfig component)
         {
             _beatSystemConfig = component;
-
-            component.BeatTrigger
-                .Where(i => _nextKeysToPress.Any(info => info.BeatNo == i.BeatNo))
-                .Select(info => new Tuple<BeatInfo, BeatKeyInfo>(info, _nextKeysToPress.Dequeue()))
-                .Delay(TimeSpan.FromSeconds(component.YellowCheckDuration))
-                .Subscribe(OnBeatDelayed)
-                .AddTo(component);
-
-            component.BeatTrigger
-                .Subscribe(i =>
-                {
-                    _lastBeatInfo = i;
-                })
-                .AddTo(component);
 
             MessageBroker.Default.Receive<EvtKeyPressed>()
                 .Subscribe(CheckKEyEventAgainstQueue)
@@ -49,29 +34,95 @@ namespace Assets.Systems.BeatChecker
             MessageBroker.Default.Receive<EvtNextBeatKeyAdded>()
                 .Subscribe(AddNextBeatKeyToQueue)
                 .AddTo(component);
+
+            SystemUpdate().Subscribe(CleanUpTriggerKeys).AddTo(component);
+        }
+
+        private void CleanUpTriggerKeys(float obj)
+        {
+            while (_nextKeysToPress.Any(info =>
+                info.TimeToPress + _beatSystemConfig.YellowCheckDuration < Time.realtimeSinceStartup))
+            {
+                var fail = _nextKeysToPress.Dequeue();
+                if (fail.State == BeatKeyState.None)
+                {
+                    fail.State = BeatKeyState.Red;
+                    MessageBroker.Default.Publish(new EvtHitMessage
+                    {
+                        State = BeatKeyState.Red,
+                        TimeStamp = Time.realtimeSinceStartup,
+                        DistanceToOptimum = Math.Abs(fail.TimeToPress - Time.realtimeSinceStartup)
+                    });
+                }
+            }
         }
 
         private void CheckKEyEventAgainstQueue(EvtKeyPressed obj)
         {
-            _lastKeyPressed = obj;
-
             if (!_nextKeysToPress.Any()) return;
 
-            var nextBeatKey = GetNextKeyToPressTime();
-            if (nextBeatKey - _beatSystemConfig.YellowCheckDuration > obj.Timestamp)
+            var nextKeyToPress = _nextKeysToPress.Peek();
+            if (nextKeyToPress.State == BeatKeyState.Red) return;
+
+            var nextTimeStamp = nextKeyToPress.TimeToPress;
+
+            bool CheckIfInGreen()
             {
-                _nextKeysToPress.Peek().State = BeatKeyState.Red;
-
-                //Debug.Log("Fail " + nextBeatKey);
+                return obj.Timestamp > nextTimeStamp - _beatSystemConfig.GreenCheckDuration
+                       && obj.Timestamp < nextTimeStamp + _beatSystemConfig.GreenCheckDuration;
             }
-        }
 
-        private float GetNextKeyToPressTime()
-        {
-            var nextKey = _nextKeysToPress.Peek();
-            var beatDelta = nextKey.BeatNo - _lastBeatInfo.BeatNo;
-            var timePerBeat = 60f / _beatSystemConfig.BPM.Value;
-            return _lastBeatInfo.BeatTime + beatDelta * timePerBeat;
+            bool CheckIfInYellow()
+            {
+                return obj.Timestamp > nextTimeStamp - _beatSystemConfig.YellowCheckDuration
+                       && obj.Timestamp < nextTimeStamp + _beatSystemConfig.YellowCheckDuration;
+            }
+
+            if (nextKeyToPress.KeyToPress != obj.Key)
+            {
+                nextKeyToPress.State = BeatKeyState.Red;
+                MessageBroker.Default.Publish(new EvtHitMessage
+                {
+                    State = BeatKeyState.Red,
+                    TimeStamp = obj.Timestamp,
+                    DistanceToOptimum = Math.Abs(nextTimeStamp - obj.Timestamp)
+                });
+                return;
+            }
+
+            if (CheckIfInGreen())
+            {
+                var hit = _nextKeysToPress.Dequeue();
+                hit.State = BeatKeyState.Green;
+                MessageBroker.Default.Publish(new EvtHitMessage
+                {
+                    State = BeatKeyState.Green,
+                    TimeStamp = obj.Timestamp,
+                    DistanceToOptimum = Math.Abs(nextTimeStamp - obj.Timestamp)
+                });
+                return;
+            }
+
+            if (CheckIfInYellow())
+            {
+                var hit = _nextKeysToPress.Dequeue();
+                hit.State = BeatKeyState.Yellow;
+                MessageBroker.Default.Publish(new EvtHitMessage
+                {
+                    State = BeatKeyState.Yellow,
+                    TimeStamp = obj.Timestamp,
+                    DistanceToOptimum = Math.Abs(nextTimeStamp - obj.Timestamp)
+                });
+                return;
+            }
+
+            nextKeyToPress.State = BeatKeyState.Red;
+            MessageBroker.Default.Publish(new EvtHitMessage
+            {
+                State = BeatKeyState.Red,
+                TimeStamp = obj.Timestamp,
+                DistanceToOptimum = Math.Abs(nextTimeStamp - obj.Timestamp)
+            });
         }
 
         private void AddNextBeatKeyToQueue(EvtNextBeatKeyAdded obj)
@@ -83,54 +134,6 @@ namespace Assets.Systems.BeatChecker
                 KeyToPress = obj.Key,
                 State = BeatKeyState.None,
             });
-
-            //Debug.Log("Enque " + obj.BeatNo);
-            foreach (var beatKeyInfo in _nextKeysToPress.ToArray())
-            {
-                Debug.Log(beatKeyInfo.BeatNo);
-            }
-        }
-
-        private void OnBeatDelayed(Tuple<BeatInfo, BeatKeyInfo> beatInfoTuple)
-        {
-            var beatInfo = beatInfoTuple.Item1;
-            var currentBeatInfo = beatInfoTuple.Item2;
-
-            //Debug.Log("Trigger " + beatInfo.BeatNo);
-
-            if (currentBeatInfo.State == BeatKeyState.Red)
-            {
-                // Send Fail
-                //Debug.Log("Fail 1 " + beatInfo.BeatNo);
-                return;
-            }
-            if (currentBeatInfo.KeyToPress != _lastKeyPressed.Key)
-            {
-                currentBeatInfo.State = BeatKeyState.Red;
-                // Send Fail
-                //Debug.Log("Fail 2 " + beatInfo.BeatNo);
-                return;
-            }
-
-            var timeDelta = Time.realtimeSinceStartup - _lastKeyPressed.Timestamp;
-            if (timeDelta < _beatSystemConfig.GreenCheckDuration * 2)
-            {
-                currentBeatInfo.State = BeatKeyState.Green;
-                Debug.Log("Green " + beatInfo.BeatNo);
-                // Send MaxPts
-            }
-            else if (timeDelta < _beatSystemConfig.YellowCheckDuration * 2)
-            {
-                currentBeatInfo.State = BeatKeyState.Yellow;
-                // Send Normal Points
-                Debug.Log("Yellow " + beatInfo.BeatNo);
-            }
-            else
-            {
-                currentBeatInfo.State = BeatKeyState.Red;
-                // Send Fail
-                //Debug.Log("Fail 3 " + beatInfo.BeatNo);
-            }
         }
     }
 
