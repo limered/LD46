@@ -1,7 +1,6 @@
-﻿using System;
-using SystemBase;
-using Assets.Systems.Beat;
+﻿using Assets.Systems.Beat;
 using Assets.Systems.Floor.Actions;
+using SystemBase;
 using UniRx;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -9,7 +8,7 @@ using Random = UnityEngine.Random;
 namespace Assets.Systems.Lights
 {
     [GameSystem(typeof(BeatSystem))]
-    public class BlinkSystem : GameSystem<BeatSystemConfig,BlinkComponent>
+    public class BlinkSystem : GameSystem<BeatSystemConfig, BlinkComponent>
     {
         private readonly ReactiveProperty<BeatSystemConfig> _beatSystemConfig = new ReactiveProperty<BeatSystemConfig>(null);
 
@@ -33,7 +32,6 @@ namespace Assets.Systems.Lights
                     });
                 }
             );
-
         }
     }
 }
