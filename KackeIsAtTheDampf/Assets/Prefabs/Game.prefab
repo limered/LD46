@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BPM:
-    value: 30
+    value: 118
   BeatTrigger:
     value: 0
 --- !u!114 &164279550
