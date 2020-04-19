@@ -22,15 +22,15 @@ namespace Assets.Systems.Score
             switch (msg.State)
             {
                 case BeatKeyState.Red:
-                    component.HyperScore.Value = Mathf.Min(component.MinHyperScore,
+                    component.HyperScore.Value = Mathf.Max(component.MinHyperScore,
                         component.HyperScore.Value + component.RedHitPoints);
                     break;
                 case BeatKeyState.Yellow:
-                    component.HyperScore.Value = Mathf.Max(component.MaxHyperScore,
+                    component.HyperScore.Value = Mathf.Min(component.MaxHyperScore,
                         component.HyperScore.Value + component.YellowPoints);
                     break;
                 case BeatKeyState.Green:
-                    component.HyperScore.Value = Mathf.Max(component.MaxHyperScore,
+                    component.HyperScore.Value = Mathf.Min(component.MaxHyperScore,
                         component.HyperScore.Value + component.GreenPoints);
                     break;
                 default:

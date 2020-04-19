@@ -10,9 +10,10 @@ using UnityEngine;
 
 namespace Assets.Systems.HyperMeterAnimation
 {
+    [GameSystem(typeof(ScoreSystem))]
     public class HyperMeterAnimationSystem : GameSystem<HyperMeterComponent, ScoreComponent>
     {
-        private ReactiveProperty<HyperMeterComponent> _hyperMeterComponent = new ReactiveProperty<HyperMeterComponent>();
+        private readonly ReactiveProperty<HyperMeterComponent> _hyperMeterComponent = new ReactiveProperty<HyperMeterComponent>();
 
         public override void Register(HyperMeterComponent component)
         {
@@ -27,30 +28,26 @@ namespace Assets.Systems.HyperMeterAnimation
 
         private void Register(ScoreComponent component, HyperMeterComponent hyperMeterComponent)
         {
-            component.HyperScore
-                .Subscribe(score => CalculateTargetValue(score, hyperMeterComponent))
-                .AddTo(component);
-
             SystemFixedUpdate(hyperMeterComponent)
-                .Subscribe(AnimateHyperArrow)
+                .Subscribe(hyper => AnimateHyperArrow(hyper, component))
                 .AddTo(hyperMeterComponent);
         }
 
-        private void AnimateHyperArrow(HyperMeterComponent component)
+        private void AnimateHyperArrow(HyperMeterComponent component, ScoreComponent scoreComponent)
         {
+            var targetAngle = 180 - (scoreComponent.HyperScore.Value / 100 * 180);
+
             var transform = component.GetComponent<RectTransform>();
             var currentAngle = transform.eulerAngles.z;
+            var newZ = targetAngle * 0.1f + currentAngle * 0.9f;
+            transform.eulerAngles = new Vector3(0,0, newZ);
 
         }
 
         private void CalculateTargetValue(float score, HyperMeterComponent hyperComponent)
         {
+            Debug.Log(hyperComponent.TargetAngle);
             hyperComponent.TargetAngle = -180 + (score / 100 * 180);
         }
-    }
-
-    public class HyperMeterComponent : GameComponent
-    {
-        public float TargetAngle;
     }
 }
