@@ -29,6 +29,7 @@ namespace Assets.Systems.Chorio
 
             MessageBroker.Default.Publish(new EvtNextBeatKeyAdded
             {
+                Id = Time.frameCount,
                 Key = _keyInfoComponent.Value.RelevantKeys[(int)(Random.value * _keyInfoComponent.Value.RelevantKeys.Length)],
                 PlannedBeatTime = beatInfo.BeatTime + timePerBeat * 10,
                 BeatNo = beatInfo.BeatNo + 10

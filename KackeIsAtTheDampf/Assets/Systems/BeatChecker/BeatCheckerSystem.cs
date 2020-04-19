@@ -49,6 +49,7 @@ namespace Assets.Systems.BeatChecker
                     fail.State = BeatKeyState.Red;
                     MessageBroker.Default.Publish(new EvtHitMessage
                     {
+                        Id = fail.Id,
                         State = BeatKeyState.Red,
                         TimeStamp = Time.realtimeSinceStartup,
                         DistanceToOptimum = Math.Abs(fail.TimeToPress - Time.realtimeSinceStartup)
@@ -83,6 +84,7 @@ namespace Assets.Systems.BeatChecker
                 nextKeyToPress.State = BeatKeyState.Red;
                 MessageBroker.Default.Publish(new EvtHitMessage
                 {
+                    Id = nextKeyToPress.Id,
                     State = BeatKeyState.Red,
                     TimeStamp = obj.Timestamp,
                     DistanceToOptimum = Math.Abs(nextTimeStamp - obj.Timestamp)
@@ -96,6 +98,7 @@ namespace Assets.Systems.BeatChecker
                 hit.State = BeatKeyState.Green;
                 MessageBroker.Default.Publish(new EvtHitMessage
                 {
+                    Id = nextKeyToPress.Id,
                     State = BeatKeyState.Green,
                     TimeStamp = obj.Timestamp,
                     DistanceToOptimum = Math.Abs(nextTimeStamp - obj.Timestamp)
@@ -109,6 +112,7 @@ namespace Assets.Systems.BeatChecker
                 hit.State = BeatKeyState.Yellow;
                 MessageBroker.Default.Publish(new EvtHitMessage
                 {
+                    Id = nextKeyToPress.Id,
                     State = BeatKeyState.Yellow,
                     TimeStamp = obj.Timestamp,
                     DistanceToOptimum = Math.Abs(nextTimeStamp - obj.Timestamp)
@@ -119,6 +123,7 @@ namespace Assets.Systems.BeatChecker
             nextKeyToPress.State = BeatKeyState.Red;
             MessageBroker.Default.Publish(new EvtHitMessage
             {
+                Id = nextKeyToPress.Id,
                 State = BeatKeyState.Red,
                 TimeStamp = obj.Timestamp,
                 DistanceToOptimum = Math.Abs(nextTimeStamp - obj.Timestamp)
