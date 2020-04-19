@@ -1,8 +1,10 @@
 ﻿using Assets.Systems.Beat;
 using Assets.Systems.Chorio.Evt;
 using SystemBase;
+using Assets.Systems.Chorio.Generator;
 using Assets.Systems.Key;
 using UniRx;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace Assets.Systems.Chorio
@@ -12,10 +14,14 @@ namespace Assets.Systems.Chorio
     {
         private readonly ReactiveProperty<KeyInfoComponent> _keyInfoComponent = new ReactiveProperty<KeyInfoComponent>();
 
+        private IChorioGenerator _currentGenerator;
+
         public override void Register(BeatSystemConfig component)
         {
             component.WaitOn(_keyInfoComponent).Subscribe(infoComponent =>
                 {
+                    _currentGenerator = new FailingGenerator();
+
                     component.BeatTrigger
                         .Subscribe(beatInfo => OnBeat(beatInfo, component.TimePerBeat))
                         .AddTo(component);
@@ -25,15 +31,13 @@ namespace Assets.Systems.Chorio
 
         private void OnBeat(BeatInfo beatInfo, float timePerBeat)
         {
-            if (beatInfo.BeatNo % 4 != 0) return;
+            EvtNextBeatKeyAdded[] keys = _currentGenerator
+                .GenerateTargetsForBeat(beatInfo, timePerBeat, _keyInfoComponent.Value);
 
-            MessageBroker.Default.Publish(new EvtNextBeatKeyAdded
+            foreach (var beatKeyAdded in keys)
             {
-                Id = Time.frameCount,
-                Key = _keyInfoComponent.Value.RelevantKeys[(int)(Random.value * _keyInfoComponent.Value.RelevantKeys.Length)],
-                PlannedBeatTime = beatInfo.BeatTime + timePerBeat * 10,
-                BeatNo = beatInfo.BeatNo + 10
-            });
+                MessageBroker.Default.Publish(beatKeyAdded);
+            }
         }
 
         public override void Register(KeyInfoComponent component)
