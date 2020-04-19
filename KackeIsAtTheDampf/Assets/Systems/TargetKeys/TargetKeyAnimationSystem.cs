@@ -2,9 +2,12 @@
 using System.Linq;
 using SystemBase;
 using Assets.Systems.Beat;
+using Assets.Systems.BeatChecker;
+using Assets.Systems.BeatChecker.Events;
 using Assets.Systems.Chorio.Evt;
 using UniRx;
 using Unity.Collections;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
@@ -62,6 +65,24 @@ namespace Assets.Systems.TargetKeys
         public override void Register(TargetKeyAnimationComponent component)
         {
             SystemUpdate(component).Subscribe(OnAnimateKey).AddTo(component);
+
+            MessageBroker.Default.Receive<EvtHitMessage>()
+                .Where(message => message.Id == component.Id)
+                .Subscribe(msg => ChangeSpriteToFinal(msg, component))
+                .AddTo(component);
+        }
+
+        private void ChangeSpriteToFinal(EvtHitMessage obj, TargetKeyAnimationComponent targetComponent)
+        {
+            switch (obj.State)
+            {
+                case BeatKeyState.Green:
+                    break;
+                case BeatKeyState.Yellow:
+                    break;
+                case BeatKeyState.Red:
+                    break;
+            }
         }
 
         private void OnAnimateKey(TargetKeyAnimationComponent obj)

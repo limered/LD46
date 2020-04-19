@@ -5,5 +5,6 @@
         public int BeatNo { get; set; }
         public float PlannedBeatTime { get; set; }
         public string Key { get; set; }
+        public int Id { get; set; }
     }
 }
