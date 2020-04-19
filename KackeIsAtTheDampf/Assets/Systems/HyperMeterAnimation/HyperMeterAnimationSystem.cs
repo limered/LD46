@@ -28,26 +28,26 @@ namespace Assets.Systems.HyperMeterAnimation
 
         private void Register(ScoreComponent component, HyperMeterComponent hyperMeterComponent)
         {
+            component.HyperScore.Subscribe(score => CalculateTargetValue(score, hyperMeterComponent))
+                .AddTo(hyperMeterComponent);
+
             SystemFixedUpdate(hyperMeterComponent)
-                .Subscribe(hyper => AnimateHyperArrow(hyper, component))
+                .Subscribe(AnimateHyperArrow)
                 .AddTo(hyperMeterComponent);
         }
 
-        private void AnimateHyperArrow(HyperMeterComponent component, ScoreComponent scoreComponent)
+        private void AnimateHyperArrow(HyperMeterComponent component)
         {
-            var targetAngle = 180 - (scoreComponent.HyperScore.Value / 100 * 180);
-
             var transform = component.GetComponent<RectTransform>();
             var currentAngle = transform.eulerAngles.z;
-            var newZ = targetAngle * 0.1f + currentAngle * 0.9f;
+            var newZ = component.TargetAngle * 0.1f + currentAngle * 0.9f;
             transform.eulerAngles = new Vector3(0,0, newZ);
 
         }
 
         private void CalculateTargetValue(float score, HyperMeterComponent hyperComponent)
         {
-            Debug.Log(hyperComponent.TargetAngle);
-            hyperComponent.TargetAngle = -180 + (score / 100 * 180);
+            hyperComponent.TargetAngle = 180 - (score / 100 * 180);
         }
     }
 }
