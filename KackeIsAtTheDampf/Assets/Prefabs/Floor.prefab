@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FloorTilePrefab: {fileID: 4527311686628554191, guid: d64d0b5478b759e4884e946994b71edf,
     type: 3}
+  Scale: 5.8

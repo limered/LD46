@@ -18,9 +18,9 @@ namespace Assets.Systems.Floor
             {
                 for (var j = 0; j < 8; j++)
                 {
-                    var position = new Vector3(i, 0, -j);
-                    var tile = Object.Instantiate(component.FloorTilePrefab, position, Quaternion.identity,
-                        component.transform);
+                    var position = new Vector3(i * component.Scale, 0, -j * component.Scale);
+                    var tile = Object.Instantiate(component.FloorTilePrefab, position, Quaternion.identity, component.transform);
+                    tile.transform.localScale = new Vector3(component.Scale, 0.1f, component.Scale);
                     _matrix[i, j] = tile.GetComponent<FloorTileComponent>();
                 }
             }
