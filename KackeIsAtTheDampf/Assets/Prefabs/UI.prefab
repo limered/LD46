@@ -470,7 +470,11 @@ MonoBehaviour:
   Line_Top: {fileID: 3153131136630502047}
   Line_MIddle: {fileID: 3153131136679857373}
   Line_Bottom: {fileID: 3153131137641622664}
-  TargetKeyPrefab: {fileID: 1270532275681505831, guid: d4b195c06bece854d8f50ac72f78724a,
+  TargetKeyPinkPrefab: {fileID: 2369651915681482655, guid: 896d3b3b47f95a3418cea5f5466a1838,
+    type: 3}
+  TargetKeyGreenPrefab: {fileID: 2369651915681482655, guid: ce5e1777037f0e9489e44ff975ceec27,
+    type: 3}
+  TargetKeyPurplePrefab: {fileID: 2369651915681482655, guid: e7d41b939f9accb41a3f4fee92319698,
     type: 3}
   PreviewTime: 2
 --- !u!1 &3153131137570912565

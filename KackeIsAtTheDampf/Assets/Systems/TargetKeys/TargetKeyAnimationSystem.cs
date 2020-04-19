@@ -34,21 +34,21 @@ namespace Assets.Systems.TargetKeys
             GameObject targetKey = null;
             if (new[] {"w", "e", "r"}.Contains(msg.Key))
             {
-                targetKey = Object.Instantiate(config.TargetKeyPrefab, config.Line_Top.transform);
+                targetKey = Object.Instantiate(config.TargetKeyPinkPrefab, config.Line_Top.transform);
             }
             else if (new[] {"s", "d", "f"}.Contains(msg.Key))
             {
-                targetKey = Object.Instantiate(config.TargetKeyPrefab, config.Line_MIddle.transform);
+                targetKey = Object.Instantiate(config.TargetKeyPurplePrefab, config.Line_MIddle.transform);
             }
             else if (new[] {"x", "c", "v"}.Contains(msg.Key))
             {
-                targetKey = Object.Instantiate(config.TargetKeyPrefab, config.Line_Bottom.transform);
+                targetKey = Object.Instantiate(config.TargetKeyGreenPrefab, config.Line_Bottom.transform);
             }
 
             if (targetKey != null)
             {
                 targetKey.transform.localPosition = new Vector3(800, 0);
-                targetKey.GetComponent<Text>().text = msg.Key.ToUpper();
+                targetKey.GetComponentInChildren<Text>().text = msg.Key.ToUpper();
 
                 var animationComponent = targetKey.GetComponent<TargetKeyAnimationComponent>();
                 animationComponent.Key = msg.Key;
