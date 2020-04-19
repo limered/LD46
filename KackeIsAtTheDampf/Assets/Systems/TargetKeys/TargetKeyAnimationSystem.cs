@@ -56,9 +56,13 @@ namespace Assets.Systems.TargetKeys
                 var animationComponent = targetKey.GetComponent<TargetKeyAnimationComponent>();
                 animationComponent.Key = msg.Key;
                 animationComponent.PressTime = msg.PlannedBeatTime;
+                animationComponent.Backgrounds[1].gameObject.SetActive(false);
+                animationComponent.Backgrounds[2].gameObject.SetActive(false);
+                animationComponent.Backgrounds[3].gameObject.SetActive(false);
                 animationComponent.AnimationDuration = config.PreviewTime;
                 animationComponent.AnimationStartTime = msg.PlannedBeatTime - config.PreviewTime;
                 animationComponent.AnimationPerSecond = 800 / config.PreviewTime;
+                animationComponent.Id = msg.Id;
             }
         }
 
@@ -74,13 +78,18 @@ namespace Assets.Systems.TargetKeys
 
         private void ChangeSpriteToFinal(EvtHitMessage obj, TargetKeyAnimationComponent targetComponent)
         {
+            targetComponent.Backgrounds[0].gameObject.SetActive(false);
+
             switch (obj.State)
             {
                 case BeatKeyState.Green:
+                    targetComponent.Backgrounds[1].gameObject.SetActive(true);
                     break;
                 case BeatKeyState.Yellow:
+                    targetComponent.Backgrounds[2].gameObject.SetActive(true);
                     break;
                 case BeatKeyState.Red:
+                    targetComponent.Backgrounds[3].gameObject.SetActive(true);
                     break;
             }
         }
