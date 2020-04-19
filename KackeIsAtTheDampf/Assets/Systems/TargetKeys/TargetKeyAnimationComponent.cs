@@ -4,8 +4,8 @@ namespace Assets.Systems.TargetKeys
 {
     public class TargetKeyAnimationComponent : GameComponent
     {
+        public int Id;
         public string Key;
-        public float TimeLeft;
         public float PressTime;
         public float AnimationPerSecond { get; set; }
         public float AnimationDuration { get; set; }

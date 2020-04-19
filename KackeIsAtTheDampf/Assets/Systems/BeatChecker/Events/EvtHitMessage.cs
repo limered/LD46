@@ -5,5 +5,6 @@
         public float TimeStamp;
         public BeatKeyState State;
         public float DistanceToOptimum;
+        public int Id { get; set; }
     }
 }

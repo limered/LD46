@@ -129,6 +129,7 @@ namespace Assets.Systems.BeatChecker
         {
             _nextKeysToPress.Enqueue(new BeatKeyInfo
             {
+                Id = obj.Id,
                 BeatNo = obj.BeatNo,
                 TimeToPress = obj.PlannedBeatTime,
                 KeyToPress = obj.Key,
@@ -139,6 +140,7 @@ namespace Assets.Systems.BeatChecker
 
     public class BeatKeyInfo
     {
+        public int Id;
         public int BeatNo;
         public float TimeToPress;
         public string KeyToPress;
