@@ -352,6 +352,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 548380905699352869, guid: dfdefbaa102e150439fc075a870aafc6,
+        type: 3}
+      propertyPath: BPM.value
+      value: 129
+      objectReference: {fileID: 0}
+    - target: {fileID: 548380905699352869, guid: dfdefbaa102e150439fc075a870aafc6,
+        type: 3}
+      propertyPath: GreenCheckDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 548380905699352869, guid: dfdefbaa102e150439fc075a870aafc6,
+        type: 3}
+      propertyPath: YellowCheckDuration
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
 --- !u!1001 &822328235778676715
@@ -430,6 +445,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2512322619706548118, guid: 34def329f25a7c641abe0c97864f293c,
+        type: 3}
+      propertyPath: PreviewTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3153131136552492613, guid: 34def329f25a7c641abe0c97864f293c,
         type: 3}
       propertyPath: m_AnchorMin.y

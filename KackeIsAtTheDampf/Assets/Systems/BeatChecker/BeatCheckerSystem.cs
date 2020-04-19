@@ -62,7 +62,7 @@ namespace Assets.Systems.BeatChecker
             {
                 _nextKeysToPress.Peek().State = BeatKeyState.Red;
 
-                Debug.Log("Fail " + nextBeatKey);
+                //Debug.Log("Fail " + nextBeatKey);
             }
         }
 
@@ -96,19 +96,19 @@ namespace Assets.Systems.BeatChecker
             var beatInfo = beatInfoTuple.Item1;
             var currentBeatInfo = beatInfoTuple.Item2;
 
-            Debug.Log("Trigger " + beatInfo.BeatNo);
+            //Debug.Log("Trigger " + beatInfo.BeatNo);
 
             if (currentBeatInfo.State == BeatKeyState.Red)
             {
                 // Send Fail
-                Debug.Log("Fail 1 " + beatInfo.BeatNo);
+                //Debug.Log("Fail 1 " + beatInfo.BeatNo);
                 return;
             }
             if (currentBeatInfo.KeyToPress != _lastKeyPressed.Key)
             {
                 currentBeatInfo.State = BeatKeyState.Red;
                 // Send Fail
-                Debug.Log("Fail 2 " + beatInfo.BeatNo);
+                //Debug.Log("Fail 2 " + beatInfo.BeatNo);
                 return;
             }
 
@@ -129,7 +129,7 @@ namespace Assets.Systems.BeatChecker
             {
                 currentBeatInfo.State = BeatKeyState.Red;
                 // Send Fail
-                Debug.Log("Fail 3 " + beatInfo.BeatNo);
+                //Debug.Log("Fail 3 " + beatInfo.BeatNo);
             }
         }
     }

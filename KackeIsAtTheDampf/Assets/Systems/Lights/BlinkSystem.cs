@@ -24,9 +24,9 @@ namespace Assets.Systems.Lights
                 {
                     MessageBroker.Default.Publish(new ActLightUp
                     {
-                        X = Random.Range(0, 8),
-                        Y = Random.Range(0, 8),
-                        FallOff = 0.2f,
+                        X = Random.Range(0, 7),
+                        Y = Random.Range(0, 7),
+                        FallOff = 0.4f,
                         Delay = 0,
                         BlinkColor = Color.red
                     });

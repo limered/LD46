@@ -21,9 +21,9 @@ namespace Assets.Systems.Chorio
 
             MessageBroker.Default.Publish(new EvtNextBeatKeyAdded
             {
-                Key = "g",
-                PlannedBeatTime = beatInfo.BeatTime + timePerBeat * 2,
-                BeatNo = beatInfo.BeatNo + 2
+                Key = "e",
+                PlannedBeatTime = beatInfo.BeatTime + timePerBeat * 10,
+                BeatNo = beatInfo.BeatNo + 10
             });
         }
     }

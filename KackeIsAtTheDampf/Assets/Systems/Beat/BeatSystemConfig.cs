@@ -9,7 +9,7 @@ namespace Assets.Systems.Beat
         public float GreenCheckDuration = 0.2f;
 
         public FloatReactiveProperty BPM = new FloatReactiveProperty(118);
-        public float TimePerBeat { get; set; }
+        public float TimePerBeat;
         public ReactiveProperty<BeatInfo> BeatTrigger = new ReactiveProperty<BeatInfo>();
     }
 
