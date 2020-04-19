@@ -9,5 +9,6 @@ namespace Assets.Systems.TargetKeys
         public float PressTime;
         public float AnimationPerSecond { get; set; }
         public float AnimationDuration { get; set; }
+        public float AnimationStartTime { get; set; }
     }
 }

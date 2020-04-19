@@ -445,11 +445,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2512322619706548118, guid: 34def329f25a7c641abe0c97864f293c,
-        type: 3}
-      propertyPath: PreviewTime
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 3153131136552492613, guid: 34def329f25a7c641abe0c97864f293c,
         type: 3}
       propertyPath: m_AnchorMin.y

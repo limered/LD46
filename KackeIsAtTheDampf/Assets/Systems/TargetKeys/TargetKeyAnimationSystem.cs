@@ -48,20 +48,19 @@ namespace Assets.Systems.TargetKeys
             if (targetKey != null)
             {
                 targetKey.transform.localPosition = new Vector3(800, 0);
+                targetKey.GetComponent<Text>().text = msg.Key.ToUpper();
+
                 var animationComponent = targetKey.GetComponent<TargetKeyAnimationComponent>();
                 animationComponent.Key = msg.Key;
                 animationComponent.PressTime = msg.PlannedBeatTime;
                 animationComponent.AnimationDuration = config.PreviewTime;
-                animationComponent.TimeLeft = Time.realtimeSinceStartup - msg.PlannedBeatTime;
-                targetKey.GetComponent<Text>().text = msg.Key;
+                animationComponent.AnimationStartTime = msg.PlannedBeatTime - config.PreviewTime;
+                animationComponent.AnimationPerSecond = 800 / config.PreviewTime;
             }
         }
 
         public override void Register(TargetKeyAnimationComponent component)
         {
-            var xPos = component.transform.localPosition.x;
-            component.AnimationPerSecond = xPos / component.AnimationDuration;
-
             SystemUpdate(component).Subscribe(OnAnimateKey).AddTo(component);
         }
 
@@ -70,12 +69,14 @@ namespace Assets.Systems.TargetKeys
             SystemUpdate(obj)
                 .Subscribe(component =>
                 {
+                    var timeDelta = component.AnimationStartTime - Time.realtimeSinceStartup;
+                    if (timeDelta > 0) return;
+
+                    var animationDistance = 800 + timeDelta * component.AnimationPerSecond;
+
                     var transform = component.GetComponent<RectTransform>();
-
-                    if (!(Time.realtimeSinceStartup > component.PressTime - component.AnimationDuration)) return;
-
-                    var newX = transform.anchoredPosition.x - component.AnimationPerSecond * Time.deltaTime * Time.deltaTime;
-                    transform.anchoredPosition = new Vector2(newX, 0);
+                    //var newX = transform.anchoredPosition.x - component.AnimationPerSecond * Time.deltaTime * Time.deltaTime;
+                    transform.anchoredPosition = new Vector2(animationDistance, 0);
 
                     if (transform.anchoredPosition.x < -800)
                     {
