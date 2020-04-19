@@ -11,12 +11,14 @@ using UnityEngine;
 
 namespace Assets.Systems.BeatChecker
 {
+    public enum BeatKeyState
+    {
+        None, Prepare, Green, Yellow, Red
+    }
+
     [GameSystem(typeof(KeyPressSystem), typeof(BeatSystem))]
     public class BeatCheckerSystem : GameSystem<BeatSystemConfig>
     {
-        private float _yellowCheckDuration = 0.6f;
-        private float _greenCheckDuration = 0.2f;
-
         private readonly Queue<BeatKeyInfo> _nextKeysToPress = new Queue<BeatKeyInfo>();
         private BeatInfo _lastBeatInfo;
         private EvtKeyPressed _lastKeyPressed;
@@ -29,7 +31,7 @@ namespace Assets.Systems.BeatChecker
             component.BeatTrigger
                 .Where(i => _nextKeysToPress.Any(info => info.BeatNo == i.BeatNo))
                 .Select(info => new Tuple<BeatInfo, BeatKeyInfo>(info, _nextKeysToPress.Dequeue()))
-                .Delay(TimeSpan.FromSeconds(_yellowCheckDuration))
+                .Delay(TimeSpan.FromSeconds(component.YellowCheckDuration))
                 .Subscribe(OnBeatDelayed)
                 .AddTo(component);
 
@@ -56,7 +58,7 @@ namespace Assets.Systems.BeatChecker
             if (!_nextKeysToPress.Any()) return;
 
             var nextBeatKey = GetNextKeyToPressTime();
-            if (nextBeatKey - _yellowCheckDuration > obj.Timestamp)
+            if (nextBeatKey - _beatSystemConfig.YellowCheckDuration > obj.Timestamp)
             {
                 _nextKeysToPress.Peek().State = BeatKeyState.Red;
 
@@ -91,7 +93,6 @@ namespace Assets.Systems.BeatChecker
 
         private void OnBeatDelayed(Tuple<BeatInfo, BeatKeyInfo> beatInfoTuple)
         {
-
             var beatInfo = beatInfoTuple.Item1;
             var currentBeatInfo = beatInfoTuple.Item2;
 
@@ -112,13 +113,13 @@ namespace Assets.Systems.BeatChecker
             }
 
             var timeDelta = Time.realtimeSinceStartup - _lastKeyPressed.Timestamp;
-            if (timeDelta < _greenCheckDuration * 2)
+            if (timeDelta < _beatSystemConfig.GreenCheckDuration * 2)
             {
                 currentBeatInfo.State = BeatKeyState.Green;
                 Debug.Log("Green " + beatInfo.BeatNo);
                 // Send MaxPts
             }
-            else if (timeDelta < _yellowCheckDuration * 2)
+            else if (timeDelta < _beatSystemConfig.YellowCheckDuration * 2)
             {
                 currentBeatInfo.State = BeatKeyState.Yellow;
                 // Send Normal Points
@@ -139,10 +140,5 @@ namespace Assets.Systems.BeatChecker
         public float TimeToPress;
         public string KeyToPress;
         public BeatKeyState State;
-    }
-
-    public enum BeatKeyState
-    {
-        None, Prepare, Green, Yellow, Red
     }
 }
