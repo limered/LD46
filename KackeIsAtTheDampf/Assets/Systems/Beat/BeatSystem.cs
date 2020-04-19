@@ -28,11 +28,15 @@ namespace Assets.Systems.Beat
 
         private void OnBeat(BeatSystemConfig cofig)
         {
+            if (_beatNo == 0) cofig.Music.Play();
+
             cofig.BeatTrigger.Value = new BeatInfo
             {
                 BeatNo = _beatNo++,
                 BeatTime = Time.realtimeSinceStartup
             };
+
+            
         }
     }
 }

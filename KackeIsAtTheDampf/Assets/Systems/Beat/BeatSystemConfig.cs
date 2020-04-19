@@ -1,5 +1,6 @@
 ﻿using SystemBase;
 using UniRx;
+using UnityEngine;
 
 namespace Assets.Systems.Beat
 {
@@ -11,6 +12,8 @@ namespace Assets.Systems.Beat
         public FloatReactiveProperty BPM = new FloatReactiveProperty(118);
         public float TimePerBeat;
         public ReactiveProperty<BeatInfo> BeatTrigger = new ReactiveProperty<BeatInfo>();
+
+        public AudioSource Music;
     }
 
     public struct BeatInfo
