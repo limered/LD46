@@ -9,6 +9,7 @@ namespace Assets.Systems.Beat
     public class BeatSystem : GameSystem<BeatSystemConfig>
     {
         private IDisposable _timerDisposable;
+        private int _beatNo;
 
         public override void Register(BeatSystemConfig component)
         {
@@ -17,16 +18,21 @@ namespace Assets.Systems.Beat
 
         private void BPMChanged(float bpm, BeatSystemConfig config)
         {
-            var timePerBeat = 60f / bpm;
+            config.TimePerBeat = 60f / bpm;
             _timerDisposable?.Dispose();
             _timerDisposable = Observable
-                .Interval(TimeSpan.FromSeconds(timePerBeat))
-                .Subscribe(_ => OnBeat(config));
+                .Interval(TimeSpan.FromSeconds(config.TimePerBeat))
+                .Subscribe(_ => OnBeat(config))
+                .AddTo(config);
         }
 
         private void OnBeat(BeatSystemConfig cofig)
         {
-            cofig.BeatTrigger.ForceExecute();
+            cofig.BeatTrigger.Value = new BeatInfo
+            {
+                BeatNo = _beatNo++,
+                BeatTime = Time.realtimeSinceStartup
+            };
         }
     }
 }
