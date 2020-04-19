@@ -10,13 +10,15 @@ namespace Assets.Systems.Floor
     [GameSystem]
     public class FloorSystem : GameSystem<FloorComponent>
     {
-        private readonly FloorTileComponent[,] _matrix = new FloorTileComponent[8, 8];
+        public const int Dimension = 7;
+
+        private readonly FloorTileComponent[,] _matrix = new FloorTileComponent[Dimension, Dimension];
 
         public override void Register(FloorComponent component)
         {
-            for (var i = 0; i < 8; i++)
+            for (var i = 0; i < Dimension; i++)
             {
-                for (var j = 0; j < 8; j++)
+                for (var j = 0; j < Dimension; j++)
                 {
                     var position = new Vector3(i * component.Scale, 0, -j * component.Scale);
                     var tile = Object.Instantiate(component.FloorTilePrefab, position, Quaternion.identity, component.transform);
@@ -32,7 +34,7 @@ namespace Assets.Systems.Floor
 
         private void OnLightUpAction(ActLightUp msg)
         {
-            if (msg.X > 7 || msg.Y > 7)
+            if (msg.X >= Dimension || msg.Y >= Dimension)
             {
                 return;
             }

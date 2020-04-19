@@ -9,7 +9,7 @@ namespace Assets.Systems.Key
     [GameSystem]
     public class KeyPressSystem : GameSystem<KeyInfoComponent>
     {
-        private readonly string[] _relevantKeys = { "r", "t", "y", "u", "f", "g", "h", "j", "v", "b", "n", "m" };
+        private readonly string[] _relevantKeys = { "q", "w", "e", "a", "s", "d", "y", "x", "c" };
 
         public override void Register(KeyInfoComponent component)
         {
