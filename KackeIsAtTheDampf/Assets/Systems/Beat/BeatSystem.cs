@@ -22,6 +22,10 @@ namespace Assets.Systems.Beat
             IoC.Game.GameStateContext.CurrentState.Where(state => state is GameOver)
                 .Subscribe(_ => EndGame())
                 .AddTo(component);
+
+            MessageBroker.Default.Receive<ActStopTheBeat>()
+                .Subscribe(_ => EndGame())
+                .AddTo(component);
         }
 
         private void EndGame()
@@ -44,7 +48,7 @@ namespace Assets.Systems.Beat
             if (_beatNo == 0)
             {
                 cofig.Music.Play();
-                cofig.GameEndTimestamp = Time.realtimeSinceStartup + cofig.Music.clip.length;
+                cofig.GameEndTimestamp = Time.realtimeSinceStartup + 20; //cofig.Music.clip.length;
             }
 
             cofig.BeatTrigger.Value = new BeatInfo
