@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 164279550}
   - component: {fileID: 513839701}
   - component: {fileID: 513839706}
-  - component: {fileID: 390445116}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -208,23 +207,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &390445116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548380905699352792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54244bdf9dc1143848ac48338e14dc49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FailingSounds: []
-  ShittySounds: []
-  NormalSounds: []
-  CoolSounds: []
-  HotSounds: []
 --- !u!1001 &5278561488039122770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -286,6 +268,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157184002852457251, guid: 4ec2b3c8b899e420ebb1da48c835f6d4,
+        type: 3}
+      propertyPath: Volume
+      value: 0.499
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157184002852457251, guid: 4ec2b3c8b899e420ebb1da48c835f6d4,
+        type: 3}
+      propertyPath: ThrottleTimeBetweenHypeLevelChanges
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157184002852457251, guid: 4ec2b3c8b899e420ebb1da48c835f6d4,
+        type: 3}
+      propertyPath: SampleTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157184002852457251, guid: 4ec2b3c8b899e420ebb1da48c835f6d4,
+        type: 3}
+      propertyPath: PitchRange.Min
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7157184002852457251, guid: 4ec2b3c8b899e420ebb1da48c835f6d4,
+        type: 3}
+      propertyPath: PitchRange.Max
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 7949796089140461082, guid: 4ec2b3c8b899e420ebb1da48c835f6d4,
         type: 3}

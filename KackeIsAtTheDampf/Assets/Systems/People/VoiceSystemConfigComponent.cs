@@ -12,6 +12,14 @@ namespace Assets.Systems.People
     {
         [Range(0f, 1f)]
         public float Volume = 1f;
+
+        public float ThrottleTimeBetweenHypeLevelChanges = 1;
+
+        ///Periodically play a sound for the current hype level
+        public float SampleTime = 4;
+
+        public RandomFloatRange PitchRange = new RandomFloatRange { Min = 0, Max = 1 };
+
         public AudioClip[] FailingSounds = new AudioClip[0];
         public AudioClip[] ShittySounds = new AudioClip[0];
         public AudioClip[] NormalSounds = new AudioClip[0];
@@ -34,5 +42,12 @@ namespace Assets.Systems.People
             }
         }
 
+    }
+
+    [Serializable]
+    public struct RandomFloatRange
+    {
+        public float Min;
+        public float Max;
     }
 }
