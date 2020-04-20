@@ -610,6 +610,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sounds Config
       objectReference: {fileID: 0}
+    - target: {fileID: 7650985044002723052, guid: 0dd211d3f4aa64d9db8b53d95cae0ac6,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bf5fae8cea284384eac78f83dee65972, type: 3}
     - target: {fileID: 7650985044002723053, guid: 0dd211d3f4aa64d9db8b53d95cae0ac6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -664,6 +669,81 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650985044002723055, guid: 0dd211d3f4aa64d9db8b53d95cae0ac6,
+        type: 3}
+      propertyPath: GreenSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650985044002723055, guid: 0dd211d3f4aa64d9db8b53d95cae0ac6,
+        type: 3}
+      propertyPath: YellowSounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650985044002723055, guid: 0dd211d3f4aa64d9db8b53d95cae0ac6,
+        type: 3}
+      propertyPath: RedSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650985044002723055, guid: 0dd211d3f4aa64d9db8b53d95cae0ac6,
+        type: 3}
+      propertyPath: GreenSounds.Array.data[0].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: af0aad62aea731747b6bb8ec2db3c561, type: 3}
+    - target: {fileID: 7650985044002723055, guid: 0dd211d3f4aa64d9db8b53d95cae0ac6,
+        type: 3}
+      propertyPath: GreenSounds.Array.data[0].Volume
+      value: 0.096
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650985044002723055, guid: 0dd211d3f4aa64d9db8b53d95cae0ac6,
+        type: 3}
+      propertyPath: GreenSounds.Array.data[0].Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650985044002723055, guid: 0dd211d3f4aa64d9db8b53d95cae0ac6,
+        type: 3}
+      propertyPath: YellowSounds.Array.data[0].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9277f5b43da1e764aac50239ecf5215d, type: 3}
+    - target: {fileID: 7650985044002723055, guid: 0dd211d3f4aa64d9db8b53d95cae0ac6,
+        type: 3}
+      propertyPath: YellowSounds.Array.data[0].Volume
+      value: 0.222
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650985044002723055, guid: 0dd211d3f4aa64d9db8b53d95cae0ac6,
+        type: 3}
+      propertyPath: YellowSounds.Array.data[0].Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650985044002723055, guid: 0dd211d3f4aa64d9db8b53d95cae0ac6,
+        type: 3}
+      propertyPath: YellowSounds.Array.data[1].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: bf5fae8cea284384eac78f83dee65972, type: 3}
+    - target: {fileID: 7650985044002723055, guid: 0dd211d3f4aa64d9db8b53d95cae0ac6,
+        type: 3}
+      propertyPath: YellowSounds.Array.data[1].Volume
+      value: 0.222
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650985044002723055, guid: 0dd211d3f4aa64d9db8b53d95cae0ac6,
+        type: 3}
+      propertyPath: YellowSounds.Array.data[1].Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650985044002723055, guid: 0dd211d3f4aa64d9db8b53d95cae0ac6,
+        type: 3}
+      propertyPath: RedSounds.Array.data[0].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 57b7710c47395ef4993584e0bdd72270, type: 3}
+    - target: {fileID: 7650985044002723055, guid: 0dd211d3f4aa64d9db8b53d95cae0ac6,
+        type: 3}
+      propertyPath: RedSounds.Array.data[0].Volume
+      value: 0.341
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650985044002723055, guid: 0dd211d3f4aa64d9db8b53d95cae0ac6,
+        type: 3}
+      propertyPath: RedSounds.Array.data[0].Pitch
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dd211d3f4aa64d9db8b53d95cae0ac6, type: 3}
