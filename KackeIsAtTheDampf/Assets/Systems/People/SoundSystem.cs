@@ -39,7 +39,6 @@ namespace Assets.Systems.People
                     .Subscribe(level =>
                     {
                         var hypeSounds = comp.SoundsForHype(level);
-                        Debug.Log(level + " => " + hypeSounds.Length);
                         var randomIndex = hypeSounds.RandomIndex();
                         player.panStereo = UnityEngine.Random.Range(0f, 1f);
                         player.pitch = comp.PitchRange.Value;
@@ -58,7 +57,6 @@ namespace Assets.Systems.People
                 .Subscribe(key =>
                 {
                     var sounds = comp.SoundsForState(key.State);
-                    Debug.Log(key.State + " => " + sounds.Length);
                     var randomIndex = sounds.RandomIndex();
                     player.panStereo = 0.5f;
                     player.pitch = comp.PitchRange.Value;
