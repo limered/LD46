@@ -6,8 +6,6 @@ using Assets.Systems.BeatChecker;
 using Assets.Systems.BeatChecker.Events;
 using Assets.Systems.Chorio.Evt;
 using UniRx;
-using Unity.Collections;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;

@@ -1,9 +1,9 @@
 ﻿using Assets.Systems.Beat;
 using Assets.Systems.Score;
 using System;
+using System.Collections.Generic;
 using SystemBase;
 using Assets.Systems.Floor.Actions;
-using Boo.Lang;
 using UniRx;
 using UnityEngine;
 using Random = UnityEngine.Random;
