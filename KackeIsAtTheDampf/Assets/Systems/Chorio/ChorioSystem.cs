@@ -18,6 +18,9 @@ namespace Assets.Systems.Chorio
 
         private IChorioGenerator _currentGenerator;
 
+        private int _waitForBeatsCount;
+        private const int WaitTimeOnChange = 4;
+
         public override void Register(BeatSystemConfig component)
         {
             component.WaitOn(_keyInfoComponent).Subscribe(infoComponent =>
@@ -59,11 +62,15 @@ namespace Assets.Systems.Chorio
                         _currentGenerator = new CoolGenerator();
                         break;
                 }
+
+                _waitForBeatsCount = WaitTimeOnChange;
             }).AddTo(component);
         }
 
         private void OnBeat(BeatInfo beatInfo, float timePerBeat)
         {
+            if (_waitForBeatsCount-- > 0) return;
+
             EvtNextBeatKeyAdded[] keys = _currentGenerator
                 .GenerateTargetsForBeat(beatInfo, timePerBeat, _keyInfoComponent.Value);
 
