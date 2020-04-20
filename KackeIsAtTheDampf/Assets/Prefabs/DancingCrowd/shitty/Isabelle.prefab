@@ -115,5 +115,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
-  StartPosition: {x: -7.35, y: 0, z: 0}
+  StartPosition: {x: -7.35, y: 15, z: -31}
   DancePosition: {x: 13, y: 15, z: -31}
