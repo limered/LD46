@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3570910537859543090}
   - component: {fileID: 3570910537859543091}
   - component: {fileID: 2466321326707201309}
+  - component: {fileID: 993312580973312007}
   m_Layer: 0
   m_Name: Isabelle
   m_TagString: Untagged
@@ -101,3 +102,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &993312580973312007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3570910537859543088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74abb90b795913c42bcee3ad5d09dc12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartPosition: {x: -7.35, y: 0, z: 0}
+  DancePosition: {x: 13, y: 15, z: -31}

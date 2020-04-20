@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3329730276065110520}
   - component: {fileID: 3329730276065110523}
   - component: {fileID: 3329730276065110521}
+  - component: {fileID: 4316810941308299288}
   m_Layer: 0
   m_Name: Mariesella
   m_TagString: Untagged
@@ -101,3 +102,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4316810941308299288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3329730276065110522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74abb90b795913c42bcee3ad5d09dc12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartPosition: {x: 41.1, y: 14.1, z: -30.6}
+  DancePosition: {x: 16.84, y: 14.1, z: -30.6}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8912863169800482782}
   - component: {fileID: 8912863169800482783}
   - component: {fileID: 8912863169800482769}
+  - component: {fileID: 7947123476968499764}
   m_Layer: 0
   m_Name: Monica
   m_TagString: Untagged
@@ -101,3 +102,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7947123476968499764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8912863169800482780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74abb90b795913c42bcee3ad5d09dc12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartPosition: {x: -7.2, y: 14.6, z: -30.8}
+  DancePosition: {x: 23.23, y: 14.6, z: -30.8}

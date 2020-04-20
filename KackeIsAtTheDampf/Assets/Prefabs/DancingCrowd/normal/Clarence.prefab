@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7134734121997420663}
   - component: {fileID: 7134734121997420660}
   - component: {fileID: 7134734121997420661}
+  - component: {fileID: 2723685366062074893}
   m_Layer: 0
   m_Name: Clarence
   m_TagString: Untagged
@@ -101,3 +102,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2723685366062074893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7134734121997420658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74abb90b795913c42bcee3ad5d09dc12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartPosition: {x: 39.26, y: 14.2, z: -34.4}
+  DancePosition: {x: 12.33, y: 14.2, z: -34.4}

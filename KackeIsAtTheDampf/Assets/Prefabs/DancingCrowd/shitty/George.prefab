@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4119012632970176257}
   - component: {fileID: 4119012632970176256}
   - component: {fileID: 4119012632970176262}
+  - component: {fileID: 3839706889696155681}
   m_Layer: 0
   m_Name: George
   m_TagString: Untagged
@@ -101,3 +102,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3839706889696155681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4119012632970176259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74abb90b795913c42bcee3ad5d09dc12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartPosition: {x: 39.3, y: 13.7, z: -35.2}
+  DancePosition: {x: 23.8, y: 13.7, z: -35.2}

@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 2615980101147073233}
   - component: {fileID: 2615980101147073230}
   - component: {fileID: 2615980101147073231}
+  - component: {fileID: 2465970701071422484}
   m_Layer: 0
-  m_Name: JoeDisco 1
+  m_Name: JoeDisco
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,3 +102,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2465970701071422484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2615980101147073228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74abb90b795913c42bcee3ad5d09dc12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartPosition: {x: 0, y: 0, z: 0}
+  DancePosition: {x: 17.5, y: 17.1, z: -42}

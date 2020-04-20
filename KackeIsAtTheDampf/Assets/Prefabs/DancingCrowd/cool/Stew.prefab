@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3185093551079782998}
   - component: {fileID: 3185093551079782999}
   - component: {fileID: 3185093551079783001}
+  - component: {fileID: 1710000878473765353}
   m_Layer: 0
   m_Name: Stew
   m_TagString: Untagged
@@ -101,3 +102,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1710000878473765353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3185093551079782996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74abb90b795913c42bcee3ad5d09dc12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartPosition: {x: 35.3, y: 16.7, z: -37.5}
+  DancePosition: {x: 14.2, y: 16.7, z: -37.5}
