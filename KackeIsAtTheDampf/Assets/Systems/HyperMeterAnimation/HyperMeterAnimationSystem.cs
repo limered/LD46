@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using SystemBase;
 using Assets.Systems.Score;
+using GameState.States;
 using UniRx;
 using UnityEngine;
+using Utils;
 
 namespace Assets.Systems.HyperMeterAnimation
 {
@@ -18,6 +20,11 @@ namespace Assets.Systems.HyperMeterAnimation
         public override void Register(HyperMeterComponent component)
         {
             _hyperMeterComponent.Value = component;
+
+            IoC.Game.GameStateContext.CurrentState
+                .Where(state => state is GameOver)
+                .Subscribe(_ => _hyperMeterComponent.Value = null)
+                .AddTo(component);
         }
 
         public override void Register(ScoreComponent component)

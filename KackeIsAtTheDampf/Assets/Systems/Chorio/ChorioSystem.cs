@@ -4,7 +4,9 @@ using Assets.Systems.Chorio.Generator;
 using Assets.Systems.Key;
 using Assets.Systems.Score;
 using SystemBase;
+using GameState.States;
 using UniRx;
+using Utils;
 
 namespace Assets.Systems.Chorio
 {
@@ -34,6 +36,11 @@ namespace Assets.Systems.Chorio
         public override void Register(KeyInfoComponent component)
         {
             _keyInfoComponent.Value = component;
+
+            IoC.Game.GameStateContext.CurrentState
+                .Where(state => state is GameOver)
+                .Subscribe(_ => _keyInfoComponent.Value = null)
+                .AddTo(component);
         }
 
         public override void Register(ScoreComponent component)

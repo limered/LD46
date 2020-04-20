@@ -1,8 +1,10 @@
 ﻿using Assets.Systems.Score;
 using System;
 using SystemBase;
+using GameState.States;
 using UniRx;
 using UnityEngine;
+using Utils;
 
 namespace Assets.Systems.Dancer
 {
@@ -68,6 +70,11 @@ namespace Assets.Systems.Dancer
         public override void Register(ScoreComponent component)
         {
             _score.Value = component;
+
+            IoC.Game.GameStateContext.CurrentState
+                .Where(state => state is GameOver)
+                .Subscribe(_ => _score.Value = null)
+                .AddTo(component);
         }
     }
 }

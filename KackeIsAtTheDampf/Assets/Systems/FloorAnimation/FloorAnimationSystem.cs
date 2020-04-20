@@ -4,8 +4,10 @@ using System;
 using System.Collections.Generic;
 using SystemBase;
 using Assets.Systems.Floor.Actions;
+using GameState.States;
 using UniRx;
 using UnityEngine;
+using Utils;
 using Random = UnityEngine.Random;
 
 namespace Assets.Systems.FloorAnimation
@@ -20,6 +22,11 @@ namespace Assets.Systems.FloorAnimation
         public override void Register(BeatSystemConfig component)
         {
             _beatSystemConfig.Value = component;
+
+            IoC.Game.GameStateContext.CurrentState
+                .Where(state => state is GameOver)
+                .Subscribe(_ => _beatSystemConfig.Value = null)
+                .AddTo(component);
         }
 
         public override void Register(ScoreComponent component)

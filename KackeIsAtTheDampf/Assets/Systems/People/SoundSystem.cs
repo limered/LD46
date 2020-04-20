@@ -6,6 +6,8 @@ using UnityEngine;
 using Assets.Systems.Score;
 using Assets.Systems.BeatChecker;
 using Assets.Systems.BeatChecker.Events;
+using GameState.States;
+using Utils;
 using Object = UnityEngine.Object;
 using Utils.Math;
 
@@ -20,6 +22,11 @@ namespace Assets.Systems.People
         public override void Register(ScoreComponent comp)
         {
             _score.Value = comp;
+
+            IoC.Game.GameStateContext.CurrentState
+                .Where(state => state is GameOver)
+                .Subscribe(_ => _score.Value = null)
+                .AddTo(comp);
         }
 
         public override void Register(VoiceSystemConfigComponent comp)

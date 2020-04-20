@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using SystemBase;
 using Assets.Systems.Beat;
+using GameState.States;
 using UniRx;
 using UnityEngine;
+using Utils;
 
 namespace Assets.Systems.Camera
 {
@@ -51,6 +53,11 @@ namespace Assets.Systems.Camera
         public override void Register(BeatSystemConfig component)
         {
             _beatSystemObserver.Value = component;
+
+            IoC.Game.GameStateContext.CurrentState
+                .Where(state => state is GameOver)
+                .Subscribe(_ => _beatSystemObserver.Value = null)
+                .AddTo(component);
         }
     }
 }

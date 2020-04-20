@@ -15,9 +15,11 @@ namespace Assets.Systems.Beat
 
         public override void Register(BeatSystemConfig component)
         {
-            IoC.Game.GameStateContext.AfterStateChange.Where(state => state is Running)
-                .Subscribe(_ => StartGame(component))
-                .AddTo(component);
+            //IoC.Game.GameStateContext.AfterStateChange.Where(state => state is Running)
+            //    .Subscribe(_ => StartGame(component))
+            //    .AddTo(component);
+
+            StartGame(component);
 
             IoC.Game.GameStateContext.CurrentState.Where(state => state is GameOver)
                 .Subscribe(_ => EndGame())
@@ -48,7 +50,7 @@ namespace Assets.Systems.Beat
             if (_beatNo == 0)
             {
                 cofig.Music.Play();
-                cofig.GameEndTimestamp.Value = Time.realtimeSinceStartup + 20; //cofig.Music.clip.length;
+                cofig.GameEndTimestamp.Value = Time.realtimeSinceStartup + cofig.Music.clip.length;
             }
 
             cofig.BeatTrigger.Value = new BeatInfo

@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using SystemBase;
+using Assets.Systems.Beat;
 using Assets.Systems.Score;
+using GameState.States;
 using UniRx;
+using Utils;
 
 [GameSystem]
 public class ThrowSystem : GameSystem<ThrowComponent, ScoreComponent>
@@ -16,11 +19,23 @@ public class ThrowSystem : GameSystem<ThrowComponent, ScoreComponent>
         component.ThrowTypes[1].gameObject.SetActive(false);
         component.ThrowTypes[2].gameObject.SetActive(false);
         component.WaitOn(_score, score => Register(score, component)).AddTo(component);
+
+        MessageBroker.Default.Receive<ActStopTheBeat>().Subscribe(_ =>
+        {
+            component.ThrowTypes[0].gameObject.SetActive(false);
+            component.ThrowTypes[1].gameObject.SetActive(false);
+            component.ThrowTypes[2].gameObject.SetActive(false);
+        }).AddTo(component);
     }
 
     public override void Register(ScoreComponent component)
     {
         _score.Value = component;
+
+        IoC.Game.GameStateContext.CurrentState
+            .Where(state => state is GameOver)
+            .Subscribe(_ => _score.Value = null)
+            .AddTo(component);
     }
 
     public void Register(ScoreComponent score, ThrowComponent component)

@@ -5,9 +5,11 @@ using Assets.Systems.Beat;
 using Assets.Systems.BeatChecker;
 using Assets.Systems.BeatChecker.Events;
 using Assets.Systems.Chorio.Evt;
+using GameState.States;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils;
 using Object = UnityEngine.Object;
 
 namespace Assets.Systems.TargetKeys
@@ -118,6 +120,11 @@ namespace Assets.Systems.TargetKeys
         public override void Register(BeatSystemConfig component)
         {
             _beatSystemConfig.Value = component;
+
+            IoC.Game.GameStateContext.CurrentState
+                .Where(state => state is GameOver)
+                .Subscribe(_ => _beatSystemConfig.Value = null)
+                .AddTo(component);
         }
     }
 }
