@@ -48,7 +48,7 @@ namespace Assets.Systems.Beat
             if (_beatNo == 0)
             {
                 cofig.Music.Play();
-                cofig.GameEndTimestamp = Time.realtimeSinceStartup + 20; //cofig.Music.clip.length;
+                cofig.GameEndTimestamp.Value = Time.realtimeSinceStartup + 20; //cofig.Music.clip.length;
             }
 
             cofig.BeatTrigger.Value = new BeatInfo

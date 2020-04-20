@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainFloor.unity
     guid: b8fc953756855f14997f985a5c449845
+  - enabled: 1
+    path: Assets/Scenes/End_Police.unity
+    guid: d785c98286f5d61419fa5787a9521922
   m_configObjects: {}

@@ -14,7 +14,7 @@ namespace Assets.Systems.Beat
         public ReactiveProperty<BeatInfo> BeatTrigger = new ReactiveProperty<BeatInfo>();
 
         public AudioSource Music;
-        public float GameEndTimestamp;
+        public FloatReactiveProperty GameEndTimestamp = new FloatReactiveProperty();
     }
 
     public struct BeatInfo

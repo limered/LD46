@@ -8,6 +8,7 @@ using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Utils;
 
 namespace Assets.Systems.GameEnd
 {
@@ -30,10 +31,21 @@ namespace Assets.Systems.GameEnd
 
         public override void Register(BeatSystemConfig component)
         {
-            var timeToStop = component.GameEndTimestamp - Time.realtimeSinceStartup;
-            Observable.Timer(TimeSpan.FromSeconds(timeToStop))
-                .Subscribe(OnEndGame)
+            component.GameEndTimestamp
+                .Where(f => f > 0)
+                .Subscribe(f =>
+                {
+                    var timeToStop = f - Time.realtimeSinceStartup;
+                    Observable.Timer(TimeSpan.FromSeconds(timeToStop))
+                        .Subscribe(OnEndGame)
+                        .AddTo(component);
+                })
                 .AddTo(component);
+        }
+
+        public override void Register(FadeToBlackComponent component)
+        {
+            _fadeToBlackComponent = component;
         }
 
         private void OnEndGame(long obj)
@@ -60,11 +72,6 @@ namespace Assets.Systems.GameEnd
                 MessageBroker.Default.Publish(new GameMsgEnd());
                 SceneManager.LoadScene("End_Police");
             }
-        }
-
-        public override void Register(FadeToBlackComponent component)
-        {
-            _fadeToBlackComponent = component;
         }
     }
 }

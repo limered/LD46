@@ -13,5 +13,12 @@ namespace Assets.Systems.Menu
 
             MessageBroker.Default.Publish(new GameMsgStart());
         }
+
+        public void RestartGame()
+        {
+            SceneManager.LoadScene("MainFloor");
+
+            MessageBroker.Default.Publish(new GameMsgRestart());
+        }
     }
 }
