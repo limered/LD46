@@ -14,7 +14,7 @@ namespace Assets.Systems.BeatChecker
 {
     public enum BeatKeyState
     {
-        None, Prepare, Green, Yellow, Red
+        None, Green, Yellow, Red
     }
 
     [GameSystem(typeof(KeyPressSystem), typeof(BeatSystem))]

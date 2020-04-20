@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.ShortcutManagement;
@@ -45,3 +46,5 @@ public class SoundPreviewShortcut
         method.Invoke(null, new object[] { });
     }
 }
+
+#endif

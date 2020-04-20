@@ -4,27 +4,30 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using Assets.Systems.Score;
+using Utils.Math;
 
 namespace Assets.Systems.People
 {
     [RequireComponent(typeof(AudioSource))]
     public class VoiceSystemConfigComponent : GameComponent
     {
-        [Range(0f, 1f)]
-        public float Volume = 1f;
-
-        public float ThrottleTimeBetweenHypeLevelChanges = 1;
+        public float ThrottleTimeBetweenHypeLevelChanges = 0.25f;
 
         ///Periodically play a sound for the current hype level
-        public float SampleTime = 4;
+        public float SampleTime = 5f;
 
-        public RandomFloatRange PitchRange = new RandomFloatRange { Min = 0, Max = 1 };
+        ///Volume range with which the shouts are played
+        public RandomFloatRange VolumeRange = new RandomFloatRange(0.25f, 0.75f);
+        ///Pitch range with which the shouts are played
+        public RandomFloatRange PitchRange = new RandomFloatRange(0.75f, 1.25f);
 
-        public AudioClip[] FailingSounds = new AudioClip[0];
-        public AudioClip[] ShittySounds = new AudioClip[0];
-        public AudioClip[] NormalSounds = new AudioClip[0];
-        public AudioClip[] CoolSounds = new AudioClip[0];
-        public AudioClip[] HotSounds = new AudioClip[0];
+
+        public AudioClip[] FailingShouts = new AudioClip[0];
+        public AudioClip[] ShittyShouts = new AudioClip[0];
+        public AudioClip[] NormalShouts = new AudioClip[0];
+        public AudioClip[] CoolShouts = new AudioClip[0];
+        public AudioClip[] HotShouts = new AudioClip[0];
+
 
 
         ///Helper function to get the right sounds easier
@@ -32,22 +35,15 @@ namespace Assets.Systems.People
         {
             switch (level)
             {
-                case HyperLevel.Failing: return FailingSounds;
-                case HyperLevel.Shitty: return ShittySounds;
-                case HyperLevel.Normal: return NormalSounds;
-                case HyperLevel.Cool: return CoolSounds;
-                case HyperLevel.Hot: return HotSounds;
+                case HyperLevel.Failing: return FailingShouts;
+                case HyperLevel.Shitty: return ShittyShouts;
+                case HyperLevel.Normal: return NormalShouts;
+                case HyperLevel.Cool: return CoolShouts;
+                case HyperLevel.Hot: return HotShouts;
 
                 default: throw new System.Exception("unknown HyperLevel " + level);
             }
         }
 
-    }
-
-    [Serializable]
-    public struct RandomFloatRange
-    {
-        public float Min;
-        public float Max;
     }
 }
