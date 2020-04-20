@@ -309,6 +309,10 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 513839706, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: Mute
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 548380905699352792, guid: dfdefbaa102e150439fc075a870aafc6,
         type: 3}
       propertyPath: m_Name

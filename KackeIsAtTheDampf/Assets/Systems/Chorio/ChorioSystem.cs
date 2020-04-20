@@ -38,6 +38,7 @@ namespace Assets.Systems.Chorio
 
         public override void Register(ScoreComponent component)
         {
+            //return;
             component.HyperLevel.Subscribe(level =>
             {
                 switch (level)
@@ -52,8 +53,10 @@ namespace Assets.Systems.Chorio
                         _currentGenerator = new NormalGenerator();
                         break;
                     case HyperLevel.Cool:
+                        _currentGenerator = new CoolGenerator();
                         break;
                     case HyperLevel.Hot:
+                        _currentGenerator = new CoolGenerator();
                         break;
                 }
             }).AddTo(component);

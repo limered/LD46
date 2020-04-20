@@ -30,16 +30,6 @@ namespace Assets.Systems.Chorio.Generator
         }
     }
 
-    public class CoolGenerator : IChorioGenerator
-    {
-        public EvtNextBeatKeyAdded[] GenerateTargetsForBeat(BeatInfo info, float timePerBeat, KeyInfoComponent _keyInfoComponent)
-        {
-            if (info.BeatNo % 6 != 0) return new EvtNextBeatKeyAdded[0];
-
-            return new EvtNextBeatKeyAdded[0];
-        }
-    }
-
     public class HotGenerator : IChorioGenerator
     {
         public EvtNextBeatKeyAdded[] GenerateTargetsForBeat(BeatInfo info, float timePerBeat, KeyInfoComponent _keyInfoComponent)
