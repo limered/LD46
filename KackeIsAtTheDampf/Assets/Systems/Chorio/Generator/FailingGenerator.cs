@@ -72,7 +72,10 @@ namespace Assets.Systems.Chorio.Generator
     {
         public EvtNextBeatKeyAdded[] GenerateTargetsForBeat(BeatInfo info, float timePerBeat, KeyInfoComponent _keyInfoComponent)
         {
-            throw new System.NotImplementedException();
+            if (info.BeatNo % 4 != 0) return new EvtNextBeatKeyAdded[0];
+            if (Random.value < 0.05) return new EvtNextBeatKeyAdded[0]; // pause
+
+            return new EvtNextBeatKeyAdded[0];
         }
     }
 
