@@ -4,6 +4,7 @@ using Assets.Systems.BeatChecker.Events;
 using SystemBase;
 using UniRx;
 using UnityEngine;
+using System;
 
 namespace Assets.Systems.Score
 {
@@ -64,6 +65,7 @@ namespace Assets.Systems.Score
         }
     }
 
+    [Serializable]
     public enum HyperLevel
     {
         Failing = 1,
