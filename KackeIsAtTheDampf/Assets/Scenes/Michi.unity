@@ -208,8 +208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f1f926012c64b8b9e42f7a7280d4e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentState:
-    value: joe_idle01
+  State:
+    value: 
 --- !u!1001 &1114005661
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -537,6 +537,102 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1207078261, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bf5fae8cea284384eac78f83dee65972, type: 3}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: RedSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: GreenSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: YellowSounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: PitchRange.Min
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: PitchRange.Max
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: GreenSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: af0aad62aea731747b6bb8ec2db3c561, type: 3}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: GreenSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: af0aad62aea731747b6bb8ec2db3c561, type: 3}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: YellowSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9277f5b43da1e764aac50239ecf5215d, type: 3}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: RedSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 57b7710c47395ef4993584e0bdd72270, type: 3}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: YellowSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9277f5b43da1e764aac50239ecf5215d, type: 3}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: RedSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 57b7710c47395ef4993584e0bdd72270, type: 3}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: GreenSounds.Array.data[0].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: af0aad62aea731747b6bb8ec2db3c561, type: 3}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: GreenSounds.Array.data[0].Volume
+      value: 0.096
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: GreenSounds.Array.data[0].Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: YellowSounds.Array.data[0].Volume
+      value: 0.222
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: YellowSounds.Array.data[0].Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: RedSounds.Array.data[0].Volume
+      value: 0.341
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: RedSounds.Array.data[0].Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: YellowSounds.Array.data[0].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9277f5b43da1e764aac50239ecf5215d, type: 3}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: RedSounds.Array.data[0].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 57b7710c47395ef4993584e0bdd72270, type: 3}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: YellowSounds.Array.data[1].Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: bf5fae8cea284384eac78f83dee65972, type: 3}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: YellowSounds.Array.data[1].Volume
+      value: 0.222
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: YellowSounds.Array.data[1].Pitch
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 548380905699352792, guid: dfdefbaa102e150439fc075a870aafc6,
         type: 3}
       propertyPath: m_Name

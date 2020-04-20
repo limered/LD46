@@ -59,8 +59,8 @@ namespace Assets.Systems.People
                     var sounds = comp.SoundsForState(key.State);
                     var randomIndex = sounds.RandomIndex();
                     player.panStereo = 0.5f;
-                    player.pitch = comp.PitchRange.Value;
-                    player.PlayOneShot(sounds[randomIndex], comp.VolumeRange.Value);
+                    player.pitch = sounds[randomIndex].Pitch;
+                    player.PlayOneShot(sounds[randomIndex].Clip, sounds[randomIndex].Volume);
                 })
                 .AddTo(comp);
         }

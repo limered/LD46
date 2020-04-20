@@ -12,18 +12,14 @@ namespace Assets.Systems.People
     [RequireComponent(typeof(AudioSource))]
     public class SoundSystemConfigComponent : GameComponent
     {
-        public RandomFloatRange VolumeRange = new RandomFloatRange(1f, 1f);
-        ///Pitch range with which the shouts are played
-        public RandomFloatRange PitchRange = new RandomFloatRange(0.75f, 1.25f);
-
         ///played when player hits the right key perfectly
-        public AudioClip[] GreenSounds = new AudioClip[0];
+        public AudioClipWithVolumeAndPitch[] GreenSounds = new AudioClipWithVolumeAndPitch[0];
         ///played when player hits the right key in OK range
-        public AudioClip[] YellowSounds = new AudioClip[0];
+        public AudioClipWithVolumeAndPitch[] YellowSounds = new AudioClipWithVolumeAndPitch[0];
         ///played when player hits the right key in OK range
-        public AudioClip[] RedSounds = new AudioClip[0];
+        public AudioClipWithVolumeAndPitch[] RedSounds = new AudioClipWithVolumeAndPitch[0];
 
-        public AudioClip[] SoundsForState(BeatKeyState keyState)
+        public AudioClipWithVolumeAndPitch[] SoundsForState(BeatKeyState keyState)
         {
             switch (keyState)
             {
@@ -35,5 +31,16 @@ namespace Assets.Systems.People
                 default: throw new System.Exception("unknown BeatKeyState " + keyState);
             }
         }
+    }
+
+    [Serializable]
+    public struct AudioClipWithVolumeAndPitch
+    {
+        public AudioClip Clip;
+
+        [Range(0f, 1f)]
+        public float Volume;
+
+        public float Pitch;
     }
 }
