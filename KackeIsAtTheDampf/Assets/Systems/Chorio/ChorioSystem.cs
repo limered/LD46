@@ -1,13 +1,10 @@
-﻿using System;
-using Assets.Systems.Beat;
+﻿using Assets.Systems.Beat;
 using Assets.Systems.Chorio.Evt;
-using SystemBase;
 using Assets.Systems.Chorio.Generator;
 using Assets.Systems.Key;
 using Assets.Systems.Score;
+using SystemBase;
 using UniRx;
-using UnityEditor.VersionControl;
-using UnityEngine;
 
 namespace Assets.Systems.Chorio
 {
@@ -25,7 +22,7 @@ namespace Assets.Systems.Chorio
         {
             component.WaitOn(_keyInfoComponent).Subscribe(infoComponent =>
                 {
-                    _currentGenerator = new FailingGenerator();
+                    _currentGenerator = new HotGenerator();
 
                     component.BeatTrigger
                         .Subscribe(beatInfo => OnBeat(beatInfo, component.TimePerBeat))
@@ -49,17 +46,21 @@ namespace Assets.Systems.Chorio
                     case HyperLevel.Failing:
                         _currentGenerator = new FailingGenerator();
                         break;
+
                     case HyperLevel.Shitty:
                         _currentGenerator = new ShittyGenerator();
                         break;
+
                     case HyperLevel.Normal:
                         _currentGenerator = new NormalGenerator();
                         break;
+
                     case HyperLevel.Cool:
                         _currentGenerator = new CoolGenerator();
                         break;
+
                     case HyperLevel.Hot:
-                        _currentGenerator = new CoolGenerator();
+                        _currentGenerator = new HotGenerator();
                         break;
                 }
 

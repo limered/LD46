@@ -30,14 +30,6 @@ namespace Assets.Systems.Chorio.Generator
         }
     }
 
-    public class HotGenerator : IChorioGenerator
-    {
-        public EvtNextBeatKeyAdded[] GenerateTargetsForBeat(BeatInfo info, float timePerBeat, KeyInfoComponent _keyInfoComponent)
-        {
-            throw new System.NotImplementedException();
-        }
-    }
-
     public interface IChorioGenerator
     {
         EvtNextBeatKeyAdded[] GenerateTargetsForBeat(BeatInfo info, float timePerBeat, KeyInfoComponent _keyInfoComponent);
