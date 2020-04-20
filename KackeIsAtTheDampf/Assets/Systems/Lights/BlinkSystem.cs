@@ -20,18 +20,18 @@ namespace Assets.Systems.Lights
 
         public override void Register(BeatSystemConfig component)
         {
-            component.BeatTrigger.Subscribe(b =>
-                {
-                    MessageBroker.Default.Publish(new ActLightUp
-                    {
-                        X = Random.Range(0, 7),
-                        Y = Random.Range(0, 7),
-                        FallOff = 0.4f,
-                        Delay = 0,
-                        BlinkColor = Color.red
-                    });
-                }
-            );
+            //component.BeatTrigger.Subscribe(b =>
+            //    {
+            //        MessageBroker.Default.Publish(new ActLightUp
+            //        {
+            //            X = Random.Range(0, 7),
+            //            Y = Random.Range(0, 7),
+            //            FallOff = 0.4f,
+            //            Delay = 0,
+            //            BlinkColor = Color.red
+            //        });
+            //    }
+            //);
         }
     }
 }
