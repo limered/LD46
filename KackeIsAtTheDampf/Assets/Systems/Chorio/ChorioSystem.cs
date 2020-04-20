@@ -22,7 +22,7 @@ namespace Assets.Systems.Chorio
         {
             component.WaitOn(_keyInfoComponent).Subscribe(infoComponent =>
                 {
-                    _currentGenerator = new HotGenerator();
+                    _currentGenerator = new FailingGenerator();
 
                     component.BeatTrigger
                         .Subscribe(beatInfo => OnBeat(beatInfo, component.TimePerBeat))

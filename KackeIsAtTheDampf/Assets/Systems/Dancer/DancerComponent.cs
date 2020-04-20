@@ -1,9 +1,13 @@
 ﻿using SystemBase;
 using UnityEngine;
 
-public class DancerComponent : GameComponent
+namespace Assets.Systems.Dancer
 {
-    public DanceType Type;
-    public Vector3 StartPosition;
-    public Vector3 DancePosition;
+    public class DancerComponent : GameComponent
+    {
+        public DanceType Type;
+        public Vector3 StartPosition;
+        public Vector3 DancePosition;
+        public Vector3 TargetPosition { get; set; }
+    }
 }

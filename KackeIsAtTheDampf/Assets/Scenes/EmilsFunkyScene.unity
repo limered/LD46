@@ -187,25 +187,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &531470069 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 822328235127225808, guid: 8f79773f8af6e2246b726b1fef07d189,
-    type: 3}
-  m_PrefabInstance: {fileID: 822328235778676715}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &531470074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 531470069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ba90e75032777c47b4c68d10d591b71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetColor: {r: 0.5019608, g: 0.05672159, b: 0.05672159, a: 0}
 --- !u!1 &937162845
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +286,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 164279550, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
+      propertyPath: RelevantKeys.Array.data[5]
+      value: f
+      objectReference: {fileID: 0}
     - target: {fileID: 513839706, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
       propertyPath: m_Volume
       value: 1
@@ -382,26 +367,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 822328235127225812, guid: 8f79773f8af6e2246b726b1fef07d189,
-        type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0.66096395
-      objectReference: {fileID: 0}
-    - target: {fileID: 822328235127225812, guid: 8f79773f8af6e2246b726b1fef07d189,
-        type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0.18476002
-      objectReference: {fileID: 0}
-    - target: {fileID: 822328235127225812, guid: 8f79773f8af6e2246b726b1fef07d189,
-        type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0.745
-      objectReference: {fileID: 0}
-    - target: {fileID: 822328235127225812, guid: 8f79773f8af6e2246b726b1fef07d189,
-        type: 3}
-      propertyPath: m_ClearFlags
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2421190342221150366, guid: 8f79773f8af6e2246b726b1fef07d189,
         type: 3}
       propertyPath: m_Name
