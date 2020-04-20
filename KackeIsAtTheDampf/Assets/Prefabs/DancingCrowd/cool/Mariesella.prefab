@@ -114,5 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74abb90b795913c42bcee3ad5d09dc12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 2
   StartPosition: {x: 41.1, y: 14.1, z: -30.6}
   DancePosition: {x: 16.84, y: 14.1, z: -30.6}

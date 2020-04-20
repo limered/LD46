@@ -188,11 +188,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mariesella
       objectReference: {fileID: 0}
-    - target: {fileID: 3329730276065110522, guid: e5326e3f52f86aa49952ca7d2a61e9ea,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5326e3f52f86aa49952ca7d2a61e9ea, type: 3}
 --- !u!1001 &96565241
@@ -206,11 +201,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Isabelle
-      objectReference: {fileID: 0}
-    - target: {fileID: 3570910537859543088, guid: 84983e746f764aa4d9e0f0dee86104c4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3570910537859543090, guid: 84983e746f764aa4d9e0f0dee86104c4,
         type: 3}
@@ -336,11 +326,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Clarity
       objectReference: {fileID: 0}
-    - target: {fileID: 8344041023445038380, guid: b1523600b4957ad429de434e39134637,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1523600b4957ad429de434e39134637, type: 3}
 --- !u!1001 &343392205
@@ -354,11 +339,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fran
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413791435025618176, guid: 631575ac9ee2c014d8731c0716ddbe04,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5413791435025618182, guid: 631575ac9ee2c014d8731c0716ddbe04,
         type: 3}
@@ -429,11 +409,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stew
       objectReference: {fileID: 0}
-    - target: {fileID: 3185093551079782996, guid: 048e88ba1a823ef4dacc72f8ddf8b113,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3185093551079782998, guid: 048e88ba1a823ef4dacc72f8ddf8b113,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -503,11 +478,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pete
       objectReference: {fileID: 0}
-    - target: {fileID: 2447835720519206578, guid: 0affe83740b8212408cf8e54dbcf33cb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2447835720519206580, guid: 0affe83740b8212408cf8e54dbcf33cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -576,11 +546,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Monica
-      objectReference: {fileID: 0}
-    - target: {fileID: 8912863169800482780, guid: c8fe35141aac73240854f54c2a1c18b6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8912863169800482782, guid: c8fe35141aac73240854f54c2a1c18b6,
         type: 3}
@@ -897,45 +862,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5135520610377969659, guid: fce58abfce20e7747aaba9477ff170e5,
-        type: 3}
-      propertyPath: DancePosition.x
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 5135520610377969659, guid: fce58abfce20e7747aaba9477ff170e5,
-        type: 3}
-      propertyPath: DancePosition.y
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 5135520610377969659, guid: fce58abfce20e7747aaba9477ff170e5,
-        type: 3}
-      propertyPath: DancePosition.z
-      value: -42
-      objectReference: {fileID: 0}
-    - target: {fileID: 5135520610377969659, guid: fce58abfce20e7747aaba9477ff170e5,
-        type: 3}
-      propertyPath: StartPosition.x
-      value: 33.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 5135520610377969659, guid: fce58abfce20e7747aaba9477ff170e5,
-        type: 3}
-      propertyPath: StartPosition.y
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 5135520610377969659, guid: fce58abfce20e7747aaba9477ff170e5,
-        type: 3}
-      propertyPath: StartPosition.z
-      value: -42
-      objectReference: {fileID: 0}
     - target: {fileID: 8162589895644633088, guid: fce58abfce20e7747aaba9477ff170e5,
         type: 3}
       propertyPath: m_Name
       value: Axel
-      objectReference: {fileID: 0}
-    - target: {fileID: 8162589895644633088, guid: fce58abfce20e7747aaba9477ff170e5,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8162589895644633090, guid: fce58abfce20e7747aaba9477ff170e5,
         type: 3}
@@ -1061,11 +991,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: George
       objectReference: {fileID: 0}
-    - target: {fileID: 4119012632970176259, guid: f3a3bc9ee6c2c1040b289348430116ac,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3a3bc9ee6c2c1040b289348430116ac, type: 3}
 --- !u!1001 &1800209293
@@ -1148,11 +1073,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Clarence
-      objectReference: {fileID: 0}
-    - target: {fileID: 7134734121997420658, guid: 2ce42cc7dbbac7e4c8fee1b9d772d46c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7134734121997420663, guid: 2ce42cc7dbbac7e4c8fee1b9d772d46c,
         type: 3}
@@ -1292,11 +1212,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fred
       objectReference: {fileID: 0}
-    - target: {fileID: 3462868120812315242, guid: 7112cdda40e304c4ead32bd097163e55,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3462868120812315247, guid: 7112cdda40e304c4ead32bd097163e55,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1421,11 +1336,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HotAndrew
       objectReference: {fileID: 0}
-    - target: {fileID: 825718587696782015, guid: 728a802bf078d884abfa5fbc7db46a33,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 728a802bf078d884abfa5fbc7db46a33, type: 3}
 --- !u!1001 &2615980100709436321
@@ -1435,21 +1345,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2465970701071422484, guid: 78e831499cdc91d45be4ed32e037685a,
-        type: 3}
-      propertyPath: StartPosition.x
-      value: -0.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 2465970701071422484, guid: 78e831499cdc91d45be4ed32e037685a,
-        type: 3}
-      propertyPath: StartPosition.y
-      value: 17.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2465970701071422484, guid: 78e831499cdc91d45be4ed32e037685a,
-        type: 3}
-      propertyPath: StartPosition.z
-      value: -42
-      objectReference: {fileID: 0}
     - target: {fileID: 2615980101147073228, guid: 78e831499cdc91d45be4ed32e037685a,
         type: 3}
       propertyPath: m_Name
@@ -1523,11 +1418,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HotStacy
-      objectReference: {fileID: 0}
-    - target: {fileID: 6863238089843435824, guid: 0ffbf60f52f8322468033d6b44895b9c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6863238089843435826, guid: 0ffbf60f52f8322468033d6b44895b9c,
         type: 3}
