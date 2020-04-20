@@ -52,7 +52,7 @@ namespace Assets.Systems.People
         {
             var player = comp.gameObject.GetComponent<AudioSource>();
 
-            //=== Sound effects for HyperLevel changes ===
+            //=== Sound effects for hitting the right/wrong Keys ===
             MessageBroker.Default.Receive<EvtHitMessage>()
                 .Subscribe(key =>
                 {

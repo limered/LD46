@@ -11,7 +11,12 @@ namespace Systems.Animation
     [RequireComponent(typeof(Animator))]
     public class JoeAnimationComponent : GameComponent
     {
-        public StringReactiveProperty State = new StringReactiveProperty();
+        public StringReactiveProperty Dance = new StringReactiveProperty();
+        public StringReactiveProperty Pose = new StringReactiveProperty();
+
+        [Range(0f, 2f)]
+        public float PoseTime = 1f;
+        // public StringReactiveProperty CurrentState = new StringReactiveProperty();
     }
 
     public static class Joe
@@ -34,7 +39,7 @@ namespace Systems.Animation
             public const string FingerRechts = "joe_finger_rechts";
             public const string FingerRechtsStern = "joe_finger_rechts_stern";
             public const string FingerHochStern = "joe_finger_hoch_stern";
-            public const string Drehen = "joe_drehen01";
+            public const string Drehen = "joe_drehen";
         }
     }
 }

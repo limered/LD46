@@ -16,7 +16,12 @@ namespace Utils.Math
             if (arr == null) throw new System.Exception("cannot get random index of null array");
             if (arr.Length == 0) throw new System.Exception("cannot get random index of empty array");
             if (arr.Length == 1) return 0;
-            return (int)Mathf.Floor(UnityEngine.Random.Range(0, arr.Length - 1));
+            return (int)Mathf.Floor(UnityEngine.Random.Range(0, arr.Length));
+        }
+
+        public static T RandomElement<T>(this T[] arr)
+        {
+            return arr[arr.RandomIndex()];
         }
     }
 

@@ -6,12 +6,18 @@ using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
 using UniRx.Operators;
+using Assets.Systems.Score;
+using Assets.Systems.BeatChecker;
+using Assets.Systems.BeatChecker.Events;
+using Utils.Math;
 
 namespace Systems.Animation
 {
     [GameSystem]
-    public class AnimationSystem : GameSystem<BasicToggleAnimationComponent, JoeAnimationComponent>
+    public class AnimationSystem : GameSystem<BasicToggleAnimationComponent, JoeAnimationComponent, ScoreComponent>
     {
+        private ReactiveProperty<ScoreComponent> _score = new ReactiveProperty<ScoreComponent>();
+
         public override void Register(BasicToggleAnimationComponent component)
         {
             component.FixedUpdateAsObservable()
@@ -52,12 +58,59 @@ namespace Systems.Animation
         {
             var animator = comp.GetComponent<Animator>();
 
-            comp.State
-            .Subscribe(animationState =>
+            comp.WaitOn(_score, score =>
             {
-                animator.Play(animationState);
-            })
-            .AddTo(comp);
+                score.HyperLevel
+                    .Subscribe(level =>
+                    {
+                        comp.Dance.Value = (new Dictionary<HyperLevel, string> {
+                            { HyperLevel.Failing, Joe.Dance.Idle },
+                            { HyperLevel.Shitty, Joe.Dance.Idle },
+                            { HyperLevel.Normal, Joe.Dance.Normal },
+                            { HyperLevel.Cool, Joe.Dance.Cool },
+                            { HyperLevel.Hot, Joe.Dance.Cool },
+                        })[score.HyperLevel.Value];
+                    })
+                    .AddTo(comp);
+
+                MessageBroker.Default.Receive<EvtHitMessage>()
+                    .Subscribe(key =>
+                    {
+                        var isHype = score.HyperLevel.Value == HyperLevel.Hot;
+
+                        comp.Pose.Value = (new Dictionary<BeatKeyState, string[]> {
+                            { BeatKeyState.Red, new []{Joe.Poses.HorrorStand, Joe.Poses.HorrorSit} },
+                            { BeatKeyState.Yellow, new [] {
+                                Joe.Poses.Leg,
+                                Joe.Poses.Powerstand,
+                                Joe.Poses.Peace,
+                             }},
+                            { BeatKeyState.Green, new []{
+                                Joe.Poses.Drehen,
+                                (isHype ? Joe.Poses.FingerHochStern : Joe.Poses.FingerHoch),
+                                (isHype ? Joe.Poses.FingerRechtsStern : Joe.Poses.FingerRechts)
+                             }}
+                        })[key.State].RandomElement();
+                    })
+                    .AddTo(comp);
+            }).AddTo(comp);
+
+            Observable.Interval(TimeSpan.FromSeconds(comp.PoseTime))
+                .Select(_ => comp.Dance.Value)
+                .Merge(comp.Pose)
+                .Throttle(TimeSpan.FromSeconds(comp.PoseTime))
+                .Merge(comp.Pose)
+                .Subscribe(animationState =>
+                {
+                    Debug.Log(animationState);
+                    animator.Play(animationState);
+                })
+                .AddTo(comp);
+        }
+
+        public override void Register(ScoreComponent comp)
+        {
+            _score.Value = comp;
         }
 
         private IEnumerator Animate(BasicToggleAnimationComponent component)
