@@ -20,7 +20,7 @@ namespace Assets.Systems.Chorio
         {
             component.WaitOn(_keyInfoComponent).Subscribe(infoComponent =>
                 {
-                    _currentGenerator = new ShittyGenerator();
+                    _currentGenerator = new NormalGenerator();
 
                     component.BeatTrigger
                         .Subscribe(beatInfo => OnBeat(beatInfo, component.TimePerBeat))
