@@ -48,8 +48,8 @@ MonoBehaviour:
     Min: 1
     Max: 1
   PitchRange:
-    Min: 0.75
-    Max: 1.25
+    Min: 3
+    Max: 3
   GreenSounds:
   - {fileID: 8300000, guid: 2633b7a9d0130954aa6922664b33934a, type: 3}
   YellowSounds:
@@ -457,7 +457,7 @@ PrefabInstance:
     - target: {fileID: 7157184002852457251, guid: 4ec2b3c8b899e420ebb1da48c835f6d4,
         type: 3}
       propertyPath: ThrottleTimeBetweenHypeLevelChanges
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7157184002852457251, guid: 4ec2b3c8b899e420ebb1da48c835f6d4,
         type: 3}
@@ -467,12 +467,12 @@ PrefabInstance:
     - target: {fileID: 7157184002852457251, guid: 4ec2b3c8b899e420ebb1da48c835f6d4,
         type: 3}
       propertyPath: PitchRange.Min
-      value: 0.5
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7157184002852457251, guid: 4ec2b3c8b899e420ebb1da48c835f6d4,
         type: 3}
       propertyPath: PitchRange.Max
-      value: 1.7
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 7157184002852457251, guid: 4ec2b3c8b899e420ebb1da48c835f6d4,
         type: 3}
@@ -734,6 +734,11 @@ PrefabInstance:
       propertyPath: HotShouts.Array.data[8]
       value: 
       objectReference: {fileID: 8300000, guid: 24ad4f50a2eb41247a7f74ec5c6fc69d, type: 3}
+    - target: {fileID: 7157184002852457251, guid: 4ec2b3c8b899e420ebb1da48c835f6d4,
+        type: 3}
+      propertyPath: VolumeRange.Max
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7949796089140461082, guid: 4ec2b3c8b899e420ebb1da48c835f6d4,
         type: 3}
       propertyPath: m_Name

@@ -553,14 +553,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
-      propertyPath: PitchRange.Min
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1207078262, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
-      propertyPath: PitchRange.Max
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 548380905699352792, guid: dfdefbaa102e150439fc075a870aafc6,
         type: 3}
       propertyPath: m_Name
@@ -620,21 +612,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3031585945330654321, guid: dfdefbaa102e150439fc075a870aafc6,
-        type: 3}
-      propertyPath: VolumeRange.Max
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3031585945330654321, guid: dfdefbaa102e150439fc075a870aafc6,
-        type: 3}
-      propertyPath: PitchRange.Min
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3031585945330654321, guid: dfdefbaa102e150439fc075a870aafc6,
-        type: 3}
-      propertyPath: PitchRange.Max
-      value: 1.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfdefbaa102e150439fc075a870aafc6, type: 3}
