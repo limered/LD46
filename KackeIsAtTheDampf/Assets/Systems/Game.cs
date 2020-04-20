@@ -33,7 +33,9 @@ namespace Systems
             Init();
 
             MessageBroker.Default.Publish(new GameMsgFinishedLoading());
-            GameStateContext.CurrentState.Where(state => state is StartScreen).Subscribe(_ => ListenToGameStartButtonPressed());
+
+            GameStateContext.CurrentState.Where(state => state is StartScreen)
+                .Subscribe(_ => ListenToGameStartButtonPressed());
         }
 
         public override void Init()

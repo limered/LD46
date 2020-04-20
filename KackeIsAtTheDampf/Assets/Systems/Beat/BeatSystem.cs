@@ -1,7 +1,9 @@
-﻿using System;
+﻿using GameState.States;
+using System;
 using SystemBase;
 using UniRx;
 using UnityEngine;
+using Utils;
 
 namespace Assets.Systems.Beat
 {
@@ -13,13 +15,24 @@ namespace Assets.Systems.Beat
 
         public override void Register(BeatSystemConfig component)
         {
-            component.BPM.Subscribe(bpm => BPMChanged(bpm, component));
+            IoC.Game.GameStateContext.AfterStateChange.Where(state => state is Running)
+                .Subscribe(_ => StartGame(component))
+                .AddTo(component);
+
+            IoC.Game.GameStateContext.CurrentState.Where(state => state is GameOver)
+                .Subscribe(_ => EndGame())
+                .AddTo(component);
         }
 
-        private void BPMChanged(float bpm, BeatSystemConfig config)
+        private void EndGame()
         {
-            config.TimePerBeat = 60f / bpm;
             _timerDisposable?.Dispose();
+        }
+
+        private void StartGame(BeatSystemConfig config)
+        {
+            config.TimePerBeat = 60f / config.BPM.Value;
+            _beatNo = 0;
             _timerDisposable = Observable
                 .Interval(TimeSpan.FromSeconds(config.TimePerBeat))
                 .Subscribe(_ => OnBeat(config))
@@ -28,15 +41,17 @@ namespace Assets.Systems.Beat
 
         private void OnBeat(BeatSystemConfig cofig)
         {
-            if (_beatNo == 0) cofig.Music.Play();
+            if (_beatNo == 0)
+            {
+                cofig.Music.Play();
+                cofig.GameEndTimestamp = Time.realtimeSinceStartup + cofig.Music.clip.length;
+            }
 
             cofig.BeatTrigger.Value = new BeatInfo
             {
                 BeatNo = _beatNo++,
                 BeatTime = Time.realtimeSinceStartup
             };
-
-            
         }
     }
 }
