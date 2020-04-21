@@ -41,7 +41,7 @@ namespace Assets.Systems.People
                     //Periodically play a sound for the current hype level
                     .Merge(score.HyperLevel.Sample(TimeSpan.FromSeconds(comp.SampleTime)))
                     //throttle hyper level changes
-                    .Throttle(TimeSpan.FromSeconds(comp.ThrottleTimeBetweenHypeLevelChanges))
+                    .ThrottleFirst(TimeSpan.FromSeconds(comp.ThrottleTimeBetweenHypeLevelChanges))
 
                     .Subscribe(level =>
                     {

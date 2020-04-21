@@ -102,11 +102,12 @@ namespace Assets.Systems.Animation
                     .AddTo(comp);
             }).AddTo(comp);
 
-            Observable.Interval(TimeSpan.FromSeconds(comp.PoseTime))
+            Observable.Interval(TimeSpan.FromSeconds(1))
                 .Select(_ => comp.Dance.Value)
                 .Merge(comp.Pose)
-                .Throttle(TimeSpan.FromSeconds(comp.PoseTime))
+                .ThrottleFirst(TimeSpan.FromSeconds(comp.PoseTime))
                 .Merge(comp.Pose)
+                .DistinctUntilChanged()
                 .Subscribe(animationState =>
                 {
                     animator.Play(animationState);
