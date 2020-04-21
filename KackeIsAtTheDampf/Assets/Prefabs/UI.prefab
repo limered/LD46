@@ -117,7 +117,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3153131138183262125}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1111,7 +1111,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: b5c3012cba9a87640a0a25fe029fb937, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1175,7 +1175,7 @@ PrefabInstance:
     - target: {fileID: 5159118027597115649, guid: b135339256f35b5418e63a0dbc934c4d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5159118027597115649, guid: b135339256f35b5418e63a0dbc934c4d,
         type: 3}
@@ -1277,7 +1277,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5159118027597115648, guid: b135339256f35b5418e63a0dbc934c4d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b135339256f35b5418e63a0dbc934c4d, type: 3}
 --- !u!224 &5159118028958345948 stripped
 RectTransform:
@@ -1853,15 +1854,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de8a91e1502367f4fb7540b4c3f22907, type: 3}
---- !u!224 &1771511967 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5903248141567050201, guid: de8a91e1502367f4fb7540b4c3f22907,
-    type: 3}
-  m_PrefabInstance: {fileID: 5903248140080898374}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1072634082 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5903248140264208804, guid: de8a91e1502367f4fb7540b4c3f22907,
+    type: 3}
+  m_PrefabInstance: {fileID: 5903248140080898374}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1771511967 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5903248141567050201, guid: de8a91e1502367f4fb7540b4c3f22907,
     type: 3}
   m_PrefabInstance: {fileID: 5903248140080898374}
   m_PrefabAsset: {fileID: 0}
