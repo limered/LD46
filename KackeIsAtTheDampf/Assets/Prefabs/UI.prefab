@@ -185,12 +185,25 @@ Animator:
   m_Controller: {fileID: 9100000, guid: b5c3012cba9a87640a0a25fe029fb937, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1114005663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193769162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94f47569cb26746e9abf533597370889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animation: boxes02
 --- !u!1 &1460506904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,8 +1028,8 @@ RectTransform:
   - {fileID: 1843395879}
   - {fileID: 579020836}
   - {fileID: 876043670}
-  - {fileID: 1188711126}
   - {fileID: 5159118028958345948}
+  - {fileID: 1188711126}
   m_Father: {fileID: 3153131137570912566}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1104,6 +1117,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1114005665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5159118029331148593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94f47569cb26746e9abf533597370889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animation: boxes02
 --- !u!1001 &1398627293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1225,6 +1251,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159118028042269922, guid: b135339256f35b5418e63a0dbc934c4d,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5159118028042269932, guid: b135339256f35b5418e63a0dbc934c4d,
         type: 3}
@@ -1507,6 +1538,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5159118028042269922, guid: b135339256f35b5418e63a0dbc934c4d,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5159118028042269932, guid: b135339256f35b5418e63a0dbc934c4d,
         type: 3}
       propertyPath: m_Layer
@@ -1527,7 +1563,9 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5159118027597115648, guid: b135339256f35b5418e63a0dbc934c4d, type: 3}
+    - {fileID: 5159118027597115648, guid: b135339256f35b5418e63a0dbc934c4d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b135339256f35b5418e63a0dbc934c4d, type: 3}
 --- !u!1 &1193769162 stripped
 GameObject:

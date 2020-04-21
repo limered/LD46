@@ -6,7 +6,7 @@ using UniRx;
 using UnityEngine;
 using Utils.Plugins;
 
-namespace Systems.Animation
+namespace Assets.Systems.Animation
 {
     public class BasicToggleAnimationComponent : GameComponent
     {
