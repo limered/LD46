@@ -337,8 +337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e94d8be8ac4463949be6561c72bfd6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RedHitPoints: -10
-  YellowPoints: 2
+  RedHitPoints: -6
+  YellowPoints: 3
   GreenPoints: 5
   MaxHyperScore: 100
   MinHyperScore: 0

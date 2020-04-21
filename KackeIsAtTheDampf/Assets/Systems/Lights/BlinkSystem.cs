@@ -26,7 +26,7 @@ namespace Assets.Systems.Lights
             _beatSystemConfig.Value = component;
 
             IoC.Game.GameStateContext.CurrentState.Where(state => state is GameOver)
-                .Subscribe(_ => _beatSystemConfig = null).AddTo(component);
+                .Subscribe(_ => _beatSystemConfig.Value = null).AddTo(component);
         }
 
         public override void Register(SpotLightComponent component)

@@ -18,7 +18,6 @@ namespace Assets.Systems.Chorio
         private IChorioGenerator _currentGenerator;
 
         private int _waitForBeatsCount;
-        private const int WaitTimeOnChange = 4;
 
         public override void Register(BeatSystemConfig component)
         {
@@ -71,7 +70,7 @@ namespace Assets.Systems.Chorio
                         break;
                 }
 
-                _waitForBeatsCount = WaitTimeOnChange;
+                _waitForBeatsCount = BaseChorioGenerator.BeatDistance;
             }).AddTo(component);
         }
 

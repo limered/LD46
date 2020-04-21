@@ -8,9 +8,9 @@ using Utils.DotNet;
 
 namespace Assets.Systems.Chorio.Generator
 {
-    public class HotGenerator : IChorioGenerator
+    public class HotGenerator : BaseChorioGenerator
     {
-        public EvtNextBeatKeyAdded[] GenerateTargetsForBeat(BeatInfo info, float timePerBeat, KeyInfoComponent _keyInfoComponent)
+        public override EvtNextBeatKeyAdded[] GenerateTargetsForBeat(BeatInfo info, float timePerBeat, KeyInfoComponent _keyInfoComponent)
         {
             if (info.BeatNo % 5 != 0) return new EvtNextBeatKeyAdded[0];
             if (Random.value < 0.05) return new EvtNextBeatKeyAdded[0]; // pause
@@ -39,7 +39,7 @@ namespace Assets.Systems.Chorio.Generator
             return list.ToArray();
         }
 
-        private static List<EvtNextBeatKeyAdded> GenerateRandomKeys(BeatInfo info, float timePerBeat, KeyInfoComponent _keyInfoComponent)
+        private List<EvtNextBeatKeyAdded> GenerateRandomKeys(BeatInfo info, float timePerBeat, KeyInfoComponent _keyInfoComponent)
         {
             var initialKeyCount = Random.Range(4, 6);
             var list = new List<EvtNextBeatKeyAdded>();
@@ -49,8 +49,8 @@ namespace Assets.Systems.Chorio.Generator
                 {
                     Id = Time.frameCount + 5000 + i,
                     Key = _keyInfoComponent.RelevantKeys.RandomElement(),
-                    BeatNo = info.BeatNo + 4 + i,
-                    PlannedBeatTime = info.BeatTime + ((4 + i) * timePerBeat)
+                    BeatNo = info.BeatNo + BeatDistance + i,
+                    PlannedBeatTime = info.BeatTime + ((BeatDistance + i) * timePerBeat)
                 });
             }
 
@@ -71,8 +71,8 @@ namespace Assets.Systems.Chorio.Generator
                 {
                     Id = Time.frameCount + 5000 + i,
                     Key = keys.RandomElement(),
-                    BeatNo = info.BeatNo + 4 + i,
-                    PlannedBeatTime = info.BeatTime + ((4f + i * 0.5f) * timePerBeat)
+                    BeatNo = info.BeatNo + BeatDistance + i,
+                    PlannedBeatTime = info.BeatTime + ((BeatDistance + i * 0.5f) * timePerBeat)
                 });
             }
 
@@ -93,8 +93,8 @@ namespace Assets.Systems.Chorio.Generator
                 {
                     Id = Time.frameCount + 5000 + i,
                     Key = keys.RandomElement(),
-                    BeatNo = info.BeatNo + 4 + i,
-                    PlannedBeatTime = info.BeatTime + ((4f + i * 0.5f) * timePerBeat)
+                    BeatNo = info.BeatNo + BeatDistance + i,
+                    PlannedBeatTime = info.BeatTime + ((BeatDistance + i * 0.5f) * timePerBeat)
                 });
             }
 
@@ -113,8 +113,8 @@ namespace Assets.Systems.Chorio.Generator
                 {
                     Id = Time.frameCount + 8000 + i,
                     Key = key,
-                    BeatNo = info.BeatNo + 4 + i,
-                    PlannedBeatTime = info.BeatTime + ((4f + i * 0.25f) * timePerBeat)
+                    BeatNo = info.BeatNo + BeatDistance + i,
+                    PlannedBeatTime = info.BeatTime + ((BeatDistance + i * 0.25f) * timePerBeat)
                 });
             }
 
@@ -134,8 +134,8 @@ namespace Assets.Systems.Chorio.Generator
                 {
                     Id = Time.frameCount + 8000 + i,
                     Key = Random.value < 0.1 ? key2 : key,
-                    BeatNo = info.BeatNo + 4 + i,
-                    PlannedBeatTime = info.BeatTime + ((4f + initialKeyCount[i]) * timePerBeat)
+                    BeatNo = info.BeatNo + BeatDistance + i,
+                    PlannedBeatTime = info.BeatTime + ((BeatDistance + initialKeyCount[i]) * timePerBeat)
                 });
             }
 

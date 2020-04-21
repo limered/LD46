@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace Assets.Systems.Chorio.Generator
 {
-    public class FailingGenerator : IChorioGenerator
+    public class FailingGenerator : BaseChorioGenerator
     {
         private int _lastBeatNumberGenerated;
         private int _minDistanceBetweenBeets = 2;
-        public EvtNextBeatKeyAdded[] GenerateTargetsForBeat(BeatInfo info, float timePerBeat, KeyInfoComponent _keyInfoComponent)
+        public override EvtNextBeatKeyAdded[] GenerateTargetsForBeat(BeatInfo info, float timePerBeat, KeyInfoComponent _keyInfoComponent)
         {
             if (_lastBeatNumberGenerated + _minDistanceBetweenBeets > info.BeatNo) return new EvtNextBeatKeyAdded[0];
             var generatorVal = (int) (Random.value * 2f);
@@ -23,15 +23,10 @@ namespace Assets.Systems.Chorio.Generator
                 {
                     Id = Time.frameCount,
                     Key = key,
-                    BeatNo = info.BeatNo + 4,
-                    PlannedBeatTime = info.BeatTime + (timePerBeat * 4),
+                    BeatNo = info.BeatNo + BeatDistance,
+                    PlannedBeatTime = info.BeatTime + (timePerBeat * BeatDistance),
                 }
             };
         }
-    }
-
-    public interface IChorioGenerator
-    {
-        EvtNextBeatKeyAdded[] GenerateTargetsForBeat(BeatInfo info, float timePerBeat, KeyInfoComponent _keyInfoComponent);
     }
 }
