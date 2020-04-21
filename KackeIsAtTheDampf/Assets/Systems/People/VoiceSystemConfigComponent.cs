@@ -27,6 +27,9 @@ namespace Assets.Systems.People
         public AudioClip[] NormalShouts = new AudioClip[0];
         public AudioClip[] CoolShouts = new AudioClip[0];
         public AudioClip[] HotShouts = new AudioClip[0];
+        public AudioClip[] HotDateShouts = new AudioClip[0];
+        public AudioClip[] CopShouts = new AudioClip[0];
+        public AudioClip[] BouncerShouts = new AudioClip[0];
 
 
 
