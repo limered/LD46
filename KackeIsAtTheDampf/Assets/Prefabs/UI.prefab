@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 203979444}
   - component: {fileID: 203979446}
   - component: {fileID: 203979445}
+  - component: {fileID: 3789063467978491217}
   m_Layer: 0
   m_Name: lightLeft
   m_TagString: Untagged
@@ -58,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.53333336}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.29803923}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -73,6 +74,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3789063467978491217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203979443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d46d3c7b25f8d4193650926eb162d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetHue: 0.3
 --- !u!114 &1148005502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +229,7 @@ GameObject:
   - component: {fileID: 1460506905}
   - component: {fileID: 1460506907}
   - component: {fileID: 1460506906}
+  - component: {fileID: 3607348525414581570}
   m_Layer: 0
   m_Name: lightRight
   m_TagString: Untagged
@@ -262,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.53333336}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.29803923}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -277,6 +292,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3607348525414581570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460506904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d46d3c7b25f8d4193650926eb162d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetHue: 0.1
 --- !u!1 &2093171684
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +316,7 @@ GameObject:
   - component: {fileID: 2093171685}
   - component: {fileID: 2093171687}
   - component: {fileID: 2093171686}
+  - component: {fileID: 5363370186507062409}
   m_Layer: 0
   m_Name: lightMiddle
   m_TagString: Untagged
@@ -335,7 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.53333336}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.29803923}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -350,6 +379,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5363370186507062409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093171684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d46d3c7b25f8d4193650926eb162d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetHue: 0.6
 --- !u!1 &3153131136552492612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1873,6 +1915,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3153131138183262125}
     m_Modifications:
+    - target: {fileID: 6723781800722539809, guid: 85d4feb0c8c21e64b979a76bad3650ae,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723781800722539809, guid: 85d4feb0c8c21e64b979a76bad3650ae,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723781800722539809, guid: 85d4feb0c8c21e64b979a76bad3650ae,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
     - target: {fileID: 6723781800722539810, guid: 85d4feb0c8c21e64b979a76bad3650ae,
         type: 3}
       propertyPath: m_LocalPosition.x
