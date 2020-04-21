@@ -7,9 +7,9 @@ using Utils.DotNet;
 
 namespace Assets.Systems.Chorio.Generator
 {
-    public class NormalGenerator : IChorioGenerator
+    public class NormalGenerator : BaseChorioGenerator
     {
-        public EvtNextBeatKeyAdded[] GenerateTargetsForBeat(BeatInfo info, float timePerBeat, KeyInfoComponent _keyInfoComponent)
+        public override EvtNextBeatKeyAdded[] GenerateTargetsForBeat(BeatInfo info, float timePerBeat, KeyInfoComponent _keyInfoComponent)
         {
             if (info.BeatNo % 4 != 0) return new EvtNextBeatKeyAdded[0];
             if (Random.value < 0.1) return new EvtNextBeatKeyAdded[0]; // pause
@@ -22,8 +22,8 @@ namespace Assets.Systems.Chorio.Generator
                 {
                     Id = Time.frameCount + 5000 + i,
                     Key = _keyInfoComponent.RelevantKeys.RandomElement(),
-                    BeatNo = info.BeatNo + 4 + i,
-                    PlannedBeatTime = info.BeatTime + (timePerBeat * (4+i))
+                    BeatNo = info.BeatNo + BeatDistance + i,
+                    PlannedBeatTime = info.BeatTime + (timePerBeat * (BeatDistance + i))
                 });
             }
 

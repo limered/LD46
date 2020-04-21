@@ -855,7 +855,7 @@ MonoBehaviour:
     type: 3}
   TargetKeyPurplePrefab: {fileID: 2369651915681482655, guid: e7d41b939f9accb41a3f4fee92319698,
     type: 3}
-  PreviewTime: 2
+  PreviewTime: 3
 --- !u!1 &3153131137570912565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,15 +1322,15 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5159118027597115648, guid: b135339256f35b5418e63a0dbc934c4d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b135339256f35b5418e63a0dbc934c4d, type: 3}
---- !u!224 &5159118028958345948 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5159118027597115649, guid: b135339256f35b5418e63a0dbc934c4d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1398627293}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5159118029331148593 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5159118028042269932, guid: b135339256f35b5418e63a0dbc934c4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1398627293}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &5159118028958345948 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5159118027597115649, guid: b135339256f35b5418e63a0dbc934c4d,
     type: 3}
   m_PrefabInstance: {fileID: 1398627293}
   m_PrefabAsset: {fileID: 0}
@@ -1610,15 +1610,15 @@ PrefabInstance:
     - {fileID: 5159118027597115648, guid: b135339256f35b5418e63a0dbc934c4d, type: 3}
     - {fileID: 5159118027597115648, guid: b135339256f35b5418e63a0dbc934c4d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b135339256f35b5418e63a0dbc934c4d, type: 3}
---- !u!1 &1193769162 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5159118028042269932, guid: b135339256f35b5418e63a0dbc934c4d,
-    type: 3}
-  m_PrefabInstance: {fileID: 5159118029000444966}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1843395879 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5159118027597115649, guid: b135339256f35b5418e63a0dbc934c4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5159118029000444966}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1193769162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5159118028042269932, guid: b135339256f35b5418e63a0dbc934c4d,
     type: 3}
   m_PrefabInstance: {fileID: 5159118029000444966}
   m_PrefabAsset: {fileID: 0}

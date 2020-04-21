@@ -29,6 +29,7 @@ namespace Assets.Systems.Lights
             {
                 _currentCoRoutine?.Dispose();
                 _currentCoRoutine = Observable.FromCoroutine(BlinkCoroutine).Subscribe();
+                _currentCoRoutine.AddTo(this);
             });
         }
 
