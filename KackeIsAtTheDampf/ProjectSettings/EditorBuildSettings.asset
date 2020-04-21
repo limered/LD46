@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/End_Police.unity
     guid: d785c98286f5d61419fa5787a9521922
+  - enabled: 1
+    path: Assets/Scenes/End_Bouncer.unity
+    guid: dc5c9f459ddc82949b13ec2f94394d3f
+  - enabled: 1
+    path: Assets/Scenes/End_HotDateAndrew.unity
+    guid: c8bfe39c248c5f247ad97cb3a4e87c9c
+  - enabled: 1
+    path: Assets/Scenes/End_HotDateStacy.unity
+    guid: 8b04dacba9fb92f4ea4d82e110661ce4
   m_configObjects: {}

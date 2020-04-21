@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Utils;
+using Random = UnityEngine.Random;
 
 namespace Assets.Systems.GameEnd
 {
@@ -21,6 +22,18 @@ namespace Assets.Systems.GameEnd
         public override void Register(ScoreComponent component)
         {
             _score = component;
+
+            _score.HyperLevel
+                .Throttle(TimeSpan.FromSeconds(10))
+                .Where(level => level == HyperLevel.Failing)
+                .Subscribe(_ => OnEndGame(0))
+                .AddTo(component);
+
+            _score.HyperLevel
+                .Throttle(TimeSpan.FromSeconds(20))
+                .Where(level => level == HyperLevel.Hot)
+                .Subscribe(_ => OnEndGame(Random.Range(2, 4)))
+                .AddTo(component);
         }
 
         public override void Register(EndGameComponent component)
@@ -37,7 +50,7 @@ namespace Assets.Systems.GameEnd
                 {
                     var timeToStop = f - Time.realtimeSinceStartup;
                     Observable.Timer(TimeSpan.FromSeconds(timeToStop))
-                        .Subscribe(OnEndGame)
+                        .Subscribe(_ => OnEndGame(1))
                         .AddTo(component);
                 })
                 .AddTo(component);
@@ -48,16 +61,16 @@ namespace Assets.Systems.GameEnd
             _fadeToBlackComponent = component;
         }
 
-        private void OnEndGame(long obj)
+        private void OnEndGame(long gameEndNumber)
         {
             MessageBroker.Default.Publish(new ActStopTheBeat());
 
             _fadeToBlackComponent.UpdateAsObservable()
-                .Subscribe(OnNext)
+                .Subscribe(_ => OnNext(gameEndNumber))
                 .AddTo(_fadeToBlackComponent);
         }
 
-        private void OnNext(Unit obj)
+        private void OnNext(long gameEndNumber)
         {
             var current = _fadeToBlackComponent.GetComponent<Image>().color.a;
             var next = Mathf.Lerp(current, 1f, 0.01f);
@@ -70,7 +83,26 @@ namespace Assets.Systems.GameEnd
             if (next > 0.999)
             {
                 MessageBroker.Default.Publish(new GameMsgEnd());
-                SceneManager.LoadScene("End_Police");
+                if (gameEndNumber == 0)
+                {
+                    SceneManager.LoadScene("End_Bouncer");
+                    return;
+                }
+                if(gameEndNumber == 1)
+                {
+                    SceneManager.LoadScene("End_Police");
+                    return;
+                }
+                if (gameEndNumber == 2)
+                {
+                    SceneManager.LoadScene("End_HotDateAndrew");
+                    return;
+                }
+                if (gameEndNumber == 3)
+                {
+                    SceneManager.LoadScene("End_HotDateStacy");
+                    return;
+                }
             }
         }
     }
