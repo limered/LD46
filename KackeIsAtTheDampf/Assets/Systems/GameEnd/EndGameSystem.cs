@@ -73,7 +73,7 @@ namespace Assets.Systems.GameEnd
         private void OnNext(long gameEndNumber)
         {
             var current = _fadeToBlackComponent.GetComponent<Image>().color.a;
-            var next = Mathf.Lerp(current, 1f, 0.01f);
+            var next = Mathf.Lerp(current, 1f, 0.03f);
             _fadeToBlackComponent.GetComponent<Image>().color = new Color(
                 _fadeToBlackComponent.GetComponent<Image>().color.r,
                 _fadeToBlackComponent.GetComponent<Image>().color.g,
